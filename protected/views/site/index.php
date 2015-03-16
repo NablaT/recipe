@@ -1,8 +1,8 @@
 <?php
 /* @var $this SiteController */
-include('config.php');
+//include('config.php');
 
-
+/*
 $req = $bdd->prepare('INSERT INTO recipe(Name,Idingredient, Quantity, Action, Step) VALUES(:name,:ingredient, :quantity, :action, :step)');
 $req->execute(array(
 	'name' => "Smoothie",
@@ -12,7 +12,7 @@ $req->execute(array(
 	'step'=>"1"
 ));
 $req->closeCursor();
-
+*/
 $this->pageTitle=Yii::app()->name;
 
 
