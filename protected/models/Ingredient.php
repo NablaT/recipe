@@ -1,24 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "recipe".
+ * This is the model class for table "ingredient".
  *
- * The followings are the available columns in table 'recipe':
+ * The followings are the available columns in table 'ingredient':
  * @property string $Name
+ * @property string $Description
  * @property string $Idingredient
- * @property double $Quantity
- * @property string $Action
- * @property integer $Step
- * @property string $Idrecipe
  */
-class Recipe extends CActiveRecord
+class Ingredient extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'recipe';
+		return 'ingredient';
 	}
 
 	/**
@@ -29,21 +26,13 @@ class Recipe extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Name, Idingredient, Quantity, Action, Step, Idrecipe', 'required'),
-			array('Step', 'numerical', 'integerOnly'=>true),
-			array('Quantity', 'numerical'),
+			array('Name, Description, Idingredient', 'required'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('Name, Idingredient, Quantity, Action, Step, Idrecipe', 'safe', 'on'=>'search'),
+			array('Name, Description, Idingredient', 'safe', 'on'=>'search'),
 		);
 	}
-	/**
-	* @return primary key; 
-	**/
-	
-	public function primaryKey(){
-		return 'Idingredient';
-	}
+
 	/**
 	 * @return array relational rules.
 	 */
@@ -52,7 +41,6 @@ class Recipe extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'ingredient' => array(self::BELONGS_TO, 'ingredient', 'idingredient'),
 		);
 	}
 
@@ -63,11 +51,8 @@ class Recipe extends CActiveRecord
 	{
 		return array(
 			'Name' => 'Name',
+			'Description' => 'Description',
 			'Idingredient' => 'Idingredient',
-			'Quantity' => 'Quantity',
-			'Action' => 'Action',
-			'Step' => 'Step',
-			'Idrecipe' => 'Idrecipe',
 		);
 	}
 
@@ -90,11 +75,8 @@ class Recipe extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('Name',$this->Name,true);
+		$criteria->compare('Description',$this->Description,true);
 		$criteria->compare('Idingredient',$this->Idingredient,true);
-		$criteria->compare('Quantity',$this->Quantity);
-		$criteria->compare('Action',$this->Action,true);
-		$criteria->compare('Step',$this->Step);
-		$criteria->compare('Idrecipe',$this->Idrecipe,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -105,7 +87,7 @@ class Recipe extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Recipe the static model class
+	 * @return Ingredient the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
