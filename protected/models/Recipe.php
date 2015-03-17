@@ -70,6 +70,17 @@ class Recipe extends CActiveRecord
 			'Idrecipe' => 'Idrecipe',
 		);
 	}
+	
+	/**
+	* This function returns the list of ingredients for one specific recipe 
+	* @return array 
+	**/
+	
+	public function getListIngredients($id){
+		$recipe= Recipe::model()->find($id);
+		find($id);
+		//for($i=0;$i
+	}
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
