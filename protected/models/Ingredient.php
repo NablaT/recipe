@@ -34,6 +34,13 @@ class Ingredient extends CActiveRecord
 	}
 
 	/**
+	* @return primary key; 
+	**/
+	public function primaryKey(){
+		return 'Idingredient';
+	}
+	
+	/**
 	 * @return array relational rules.
 	 */
 	public function relations()

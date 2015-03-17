@@ -13,7 +13,7 @@ $req->execute(array(
 ));
 $req->closeCursor();
 */
-$this->pageTitle=Yii::app()->name;
+//$this->pageTitle=Yii::app()->name;
 
 
 $recipe= Recipe::model()->findall();
