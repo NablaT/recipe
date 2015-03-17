@@ -18,7 +18,7 @@ $req->closeCursor();
 
 $recipe= Recipe::model()->findall();
 print_r($recipe);
-echo ($recipe->ingredient->name);
+echo ($recipe[0]->ingredient->Name);
 
 
 ?>
