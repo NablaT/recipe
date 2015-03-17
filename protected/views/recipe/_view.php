@@ -5,12 +5,12 @@
 
 <div class="view">
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Idingredient')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->Idingredient), array('view', 'id'=>$data->Idingredient)); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Name')); ?>:</b>
 	<?php echo CHtml::encode($data->Name); ?>
+	<br />
+<?php /** OLD VERSION echo CHtml::encode($data->getAttributeLabel('Idingredient')); */?>	
+	<b>Ingredient:</b>
+	<?php echo CHtml::link(CHtml::encode($data->ingredient->Name), array('ingredient/view', 'id'=>$data->Name)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('Quantity')); ?>:</b>

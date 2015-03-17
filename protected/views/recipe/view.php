@@ -16,9 +16,26 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Recipe #<?php echo $model->Idingredient; ?></h1>
+<h1>View Recipe #<?php echo $model->ingredient->Name; ?></h1>
 
-<?php $this->widget('zii.widgets.CDetailView', array(
+<?php 
+//After View Recipe : old version: $model->Idingredient
+
+$this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'Name',
+		'ingredient.Name',
+		'Quantity',
+		'Action',
+		'Step',
+	),
+));
+
+/* Previous version 
+
+//$model->ingredient->name
+$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		'Name',
@@ -28,4 +45,7 @@ $this->menu=array(
 		'Step',
 		'Idrecipe',
 	),
-)); ?>
+));
+
+*/
+ ?>
