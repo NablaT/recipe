@@ -26,12 +26,14 @@ catch (Exception $e)
         die('Erreur : ' . $e->getMessage());
 }
 $req=$bdd->execute('SELECT * FROM recipe WHERE Idrecipe=\'Smo1\'');*/
-//$recipe= Recipe::model()->findAll("Idrecipe=\'Smo1\'");
+//$recipe= Recipe::model()->findAll("t.Idrecipe=\'Smo1\'");
 
-$recipe= Recipe::model()->findAll(array('condition'=>"Idrecipe=\'Smo1\'"));
+//$recipe= Recipe::model()->findAll(array('condition'=>"Idrecipe=\'Smo1\'"));
+
+$recipe= Recipe::model()->findAllByAttributes(array('Idrecipe'=>"Smo1"));
 
 print_r($recipe);
-echo ($recipe[0]->ingredient->Name);
+//echo ($recipe[0]->ingredient->Name);
 
 
 ?>
