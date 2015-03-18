@@ -72,14 +72,15 @@ class Recipe extends CActiveRecord
 	}
 	
 	/**
-	* This function returns the list of ingredients for one specific recipe 
+	* This function returns the list of steps for a recipe
+	* Example of step format: $recipe[0]->Name or Idingredient or Quantity or Action or Step or Idrecipe
 	* @return array 
 	**/
 	
-	public function getListIngredients($id){
-		$recipe= Recipe::model()->find($id);
-		find($id);
-		//for($i=0;$i
+	public function getStepRecipe($id){
+		//To test: $recipe= $this->findAllByAttributes(array('Idrecipe'=>$id));
+		$recipe= Recipe::model()->findAllByAttributes(array('Idrecipe'=>$id));
+		return $recipe;
 	}
 
 	/**

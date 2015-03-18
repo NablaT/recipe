@@ -18,6 +18,15 @@ class RecipeController extends Controller
 			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
+	
+	/**
+	* This function take steps for one specific recipe from model.
+	**/
+	
+	public function getRecipe($idRecipe){
+		$recipe= Recipe::model()->getStepRecipe($idRecipe);
+		return $recipe; 
+	}
 
 	/**
 	 * Specifies the access control rules.

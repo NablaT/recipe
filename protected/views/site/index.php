@@ -1,3 +1,5 @@
+
+<a href="Recipe_View.php"> blurf </a>
 <?php
 /* @var $this SiteController */
 //include('config.php');
@@ -29,10 +31,32 @@ $req=$bdd->execute('SELECT * FROM recipe WHERE Idrecipe=\'Smo1\'');*/
 //$recipe= Recipe::model()->findAll("t.Idrecipe=\'Smo1\'");
 
 //$recipe= Recipe::model()->findAll(array('condition'=>"Idrecipe=\'Smo1\'"));
+/*
+$id="Smo1";
+$controller=new RecipeController;
+$recipe= $controller->getRecipe($id);
 
-$recipe= Recipe::model()->findAllByAttributes(array('Idrecipe'=>"Smo1"));
+//print_r($recipe[0]);
+echo($recipe[0]->Name);
+/*
+Recipe Object ( [_new:CActiveRecord:private] => [_attributes:CActiveRecord:private] => 
+Array ( [Name] => Smoothie 
+[Idingredient] => Ban1 
+[Quantity] => 2.00 
+[Action] => Put the [Step] => 1 
+[Idrecipe] => Smo1 ) 
+[_related:CActiveRecord:private] => Array ( ) [
+_c:CActiveRecord:private] => 
+[_pk:CActiveRecord:private] => Ban1 
+[_alias:CActiveRecord:private] => t 
+[_errors:CModel:private] => Array ( ) 
+[_validators:CModel:private] =>
+ [_scenario:CModel:private] => update 
+ [_e:CComponent:private] => [_m:CComponent:private] => )
+echo("///////////////////////////////////:");
 
-print_r($recipe);
+echo();
+*/
 //echo ($recipe[0]->ingredient->Name);
 
 
