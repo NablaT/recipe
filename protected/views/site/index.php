@@ -1,5 +1,6 @@
 
 <a href="Recipe_View.php"> blurf </a>
+
 <?php
 /* @var $this SiteController */
 //include('config.php');
@@ -61,5 +62,7 @@ echo();
 
 
 ?>
+
+<h1><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <h1><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
