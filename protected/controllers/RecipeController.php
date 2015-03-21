@@ -48,10 +48,27 @@ class RecipeController extends Controller
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','display'),
+				'users'=>array('admin'),
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	public function actionDisplay($id){
+		if(isset($_POST['Recipe']))
+		{
+			$model->attributes=$_POST['Recipe'];
+			if($model->save())
+				$this->redirect(array('view','id'=>$model->Idingredient));
+		}
+
+		$this->render('create',array(
+			'model'=>$model,
+		));
 	}
 
 	/**

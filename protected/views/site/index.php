@@ -1,5 +1,8 @@
 
 <a href="Recipe_View.php"> blurf </a>
+<?php echo CHtml::button('Title', array('onclick' => 'document.location.href="site/Recipe_View"'));
+ ?>
+
 
 <?php
 /* @var $this SiteController */
@@ -62,7 +65,5 @@ echo();
 
 
 ?>
-
-<h1><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <h1><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
