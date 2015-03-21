@@ -58,10 +58,15 @@ class RecipeController extends Controller
 		);
 	}
 	
+	/**
+	* Display steps for a specific recipe
+	* @param integer $id the ID of the model to be displayed
+	**/
 	public function actionDisplay($id){
 		if(isset($_POST['Recipe']))
 		{
 			$model->attributes=$_POST['Recipe'];
+			echo("je rentre");
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Idingredient));
 		}

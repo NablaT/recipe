@@ -1,33 +1,52 @@
- <?php
+<?php
 /* @var $this RecipeController */
-/* @var $data Recipe */
+/* @var $model Recipe */
+
+$this->breadcrumbs=array(
+	'Recipes'=>array('index'),
+	$model->Name,
+);
+
+$this->menu=array(
+	array('label'=>'List Recipe', 'url'=>array('index')),
+	array('label'=>'Create Recipe', 'url'=>array('create')),
+	array('label'=>'Display Recipe', 'url'=>array('display')),
+	array('label'=>'Update Recipe', 'url'=>array('update', 'id'=>$model->Idingredients)),
+	array('label'=>'Delete Recipe', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->Idingredient),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Recipe', 'url'=>array('admin')),
+);
 ?>
 
-<div class="view">
+<h1>View Recipe #<?php echo $model->ingredient->Name; ?></h1>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Name')); ?>:</b>
-	<?php echo CHtml::encode($data->Name); ?>
-	<br />
-<?php /** OLD VERSION echo CHtml::encode($data->getAttributeLabel('Idingredient')); */?>	
-	<b>Ingredient:</b>
-	<?php echo CHtml::link(CHtml::encode($data->ingredient->Name), array('ingredient/view', 'id'=>$data->Name)); ?>
-	<br />
+<?php 
+//After View Recipe : old version: $model->Idingredient
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Quantity')); ?>:</b>
-	<?php echo CHtml::encode($data->Quantity); ?>
-	<br />
+$this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'Name',
+		'ingredient.Name',
+		'Quantity',
+		'Action',
+		'Step',
+	),
+));
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Action')); ?>:</b>
-	<?php echo CHtml::encode($data->Action); ?>
-	<br />
+/* Previous version 
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Step')); ?>:</b>
-	<?php echo CHtml::encode($data->Step); ?>
-	<br />
+//$model->ingredient->name
+$this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'Name',
+		'Idingredient',
+		'Quantity',
+		'Action',
+		'Step',
+		'Idrecipe',
+	),
+));
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Idrecipe')); ?>:</b>
-	<?php echo CHtml::encode($data->Idrecipe); ?>
-	<br />
-
-
-</div>
+*/
+ ?>
