@@ -1,3 +1,4 @@
+
 <?php
 /* @var $this RecipeController */
 /* @var $model Recipe */

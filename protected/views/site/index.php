@@ -1,6 +1,9 @@
 
-<a href="Recipe_View.php"> blurf </a>
+<a href="index.php?r=recipe/display"> blurf </a>
 <?php echo CHtml::button('Title', array('onclick' => 'document.location.href="site/Recipe_View"'));
+ 
+
+
  ?>
 
 

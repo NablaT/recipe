@@ -71,6 +71,8 @@ class Recipe extends CActiveRecord
 		);
 	}
 	
+
+	
 	/**
 	* This function returns the list of steps for a recipe
 	* Example of step format: $recipe[0]->Name or Idingredient or Quantity or Action or Step or Idrecipe

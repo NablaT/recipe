@@ -48,9 +48,9 @@ class RecipeController extends Controller
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','display'),
-				'users'=>array('admin'),
+			array('allow', // allow all user user to perform 'index' and 'display' actions
+				'actions'=>array('index','display'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -66,9 +66,9 @@ class RecipeController extends Controller
 		if(isset($_POST['Recipe']))
 		{
 			$model->attributes=$_POST['Recipe'];
-			echo("je rentre");
+			
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->Idingredient));
+				$this->redirect(array('view','id'=>$model->Idingredient)); //ne change rien si je met Idrecipe
 		}
 
 		$this->render('create',array(
@@ -102,7 +102,7 @@ class RecipeController extends Controller
 		{
 			$model->attributes=$_POST['Recipe'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->Idingredient));
+				$this->redirect(array('view','id'=>$model->Idrecipe));
 		}
 
 		$this->render('create',array(
