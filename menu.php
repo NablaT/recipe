@@ -56,17 +56,18 @@ $(document).ready(function()
 	
 	if($numberOfRecipe>0){
 		$allPath=array();
-		$recipes=scandir("images"); 
+		$recipes=scandir("images/showcase"); 
 		if(count($recipes)<3){
 			echo("The folder doesn't contains any images"); 
 		}
 		else{
 			?>
+			<div id="showcase-arrow-previous" class="showcase"> </div>
 			<div id="showcase" class="showcase">
 				<!-- Each child div in #showcase with the class .showcase-slide represents a slide. -->
 				<?php
 				for($i=2; $i<count($recipes); $i++){
-					$currentPath="images/".$recipes[$i]; 
+					$currentPath="images/showcase/".$recipes[$i]; 
 				?>
 				<div class="showcase-slide">
 					<!-- Put the slide content in a div with the class .showcase-content. -->
@@ -75,20 +76,15 @@ $(document).ready(function()
 					</div>
 					<!-- Put the thumbnail content in a div with the class .showcase-thumbnail -->
 					<div class="showcase-thumbnail">
-						<img src="<?php echo($currentPath);?>" alt="<?php echo($i);?>" width="140px" />
-						<!-- The div below with the class .showcase-thumbnail-caption contains the thumbnail caption. -->
-						<div class="showcase-thumbnail-caption">Caption Text</div>
-						<!-- The div below with the class .showcase-thumbnail-cover is used for the thumbnails active state. -->
-						<div class="showcase-thumbnail-cover"></div>
+						<img src="<?php echo($currentPath);?>" alt="<?php echo($i);?>" width="140px" />		
 					</div>
 				</div>
-					<div class="showcase-caption">
-						<h2>Be creative. Get Noticed!</h2>
-					</div>
 				<?php
 				}
 				?>
 			</div>
+			
+			<div id="showcase-arrow-next" class="showcase"> </div>
 			<?php
 		}
 			
