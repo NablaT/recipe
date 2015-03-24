@@ -56,13 +56,17 @@ $(document).ready(function()
 	
 	if($numberOfRecipe>0){
 		$allPath=array();
-		
+		$recipes=scandir("images"); 
+		if(count($recipes)<3){
+			echo("The folder doesn't contains any images"); 
+		}
+		else{
 			?>
 			<div id="showcase" class="showcase">
 				<!-- Each child div in #showcase with the class .showcase-slide represents a slide. -->
 				<?php
-				for($i=1; $i<=$numberOfRecipe; $i++){
-					$currentPath="images/result".$i.".jpg"; 
+				for($i=2; $i<count($recipes); $i++){
+					$currentPath="images/".$recipes[$i]; 
 				?>
 				<div class="showcase-slide">
 					<!-- Put the slide content in a div with the class .showcase-content. -->
@@ -76,7 +80,6 @@ $(document).ready(function()
 						<div class="showcase-thumbnail-caption">Caption Text</div>
 						<!-- The div below with the class .showcase-thumbnail-cover is used for the thumbnails active state. -->
 						<div class="showcase-thumbnail-cover"></div>
-						
 					</div>
 				</div>
 					<div class="showcase-caption">
@@ -85,12 +88,10 @@ $(document).ready(function()
 				<?php
 				}
 				?>
-					<!-- Put the caption content in a div with the class .showcase-caption -->
-					
-				
 			</div>
 			<?php
-		
+		}
+			
 	}
 	else{
 		echo ("File can't be read");
