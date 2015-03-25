@@ -72,7 +72,9 @@ $(document).ready(function()
 				<div class="showcase-slide">
 					<!-- Put the slide content in a div with the class .showcase-content. -->
 					<div class="showcase-content">
-						<img src="<?php echo($currentPath);?>" alt="<?php echo($i);?>" />
+						<div class="showcase-image">
+						<img src="<?php echo($currentPath);?>" alt="<?php echo("Image ".$i);?>" />
+						</div>
 					</div>
 					<!-- Put the thumbnail content in a div with the class .showcase-thumbnail -->
 					<div class="showcase-thumbnail">
