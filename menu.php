@@ -95,5 +95,19 @@ $(document).ready(function()
 		echo ("File can't be read");
 	}
 ?>
+
+</br>
+<div id="wrapper">
+    <ul class="list">
+		<li class="item1"><a href="#">Find me a recipe</a>
+		</li>
+        <li class="item1"><a href="#">Help to cook </a>
+		</li>
+		<li class="item1"><a href="#">Find my recipe</a>
+		</li>
+	</li>
+		
+     </ul>
+</div>
 </body>
 </html>
