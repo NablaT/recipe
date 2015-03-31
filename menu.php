@@ -97,18 +97,19 @@ $(document).ready(function()
 ?>
 </div>
 </br>
-<div class="findme">
-	<a href="#">Find me a recipe</a>
-</div>
-</br>
-<div class="helpme">
-	<a href="#">Help me to cook</a>
-</div>
+<div class="functionality">
+	<div class="findme">
+		<a href="#">Find me a recipe</a>
+	</div>
+	</br>
+	<div class="helpme">
+		<a href="#">Help me to cook</a>
+	</div>
 
-<div class="findmy">
-	<a href="#">Find my recipe</a>
-</div>
-       
+	<div class="findmy">
+		<a href="#">Find my recipe</a>
+	</div>
+</div>      
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
 <footer>
