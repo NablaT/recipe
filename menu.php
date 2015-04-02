@@ -1,5 +1,5 @@
  <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title> Menu </title>
 <link rel="stylesheet" href="css/menu.css" />
@@ -97,9 +97,10 @@ $(document).ready(function()
 ?>
 </div>
 </br>
-<div class="functionality">
 	<div class="findme">
-		<a href="#">Find me a recipe</a>
+	<?php $form=$this->beginWidget('CActiveForm', array('id'=>'display-form','action' => 
+'/site/display','enableAjaxValidation'=>false,'htmlOptions' => array('enctype' => 'multipart/form-data'),)); ?>
+		<a href="/protected/views/site/findMeView.php">Find me a recipe</a>
 	</div>
 	</br>
 	<div class="helpme">

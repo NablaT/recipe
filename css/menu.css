@@ -17,6 +17,8 @@ body
 	margin-bottom: 30px;
 }
 
+@media screen and (max-width: 320px) { @viewport { width: 320px; } }
+
 a
 {
 	color: #ff377c;
