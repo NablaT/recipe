@@ -47,73 +47,83 @@ $(document).ready(function()
 </script>
 </head>
 <body>
+<?php 
+include 'config/isconnected.php';
 
-<div style="width: 845px; margin: auto;">
-	
-	<!-- This is the button used to switch between One Page and Slideshow. -->
-	<?php 
-	include("data.php");
-	
-	if($numberOfRecipe>0){
-		$allPath=array();
-		$recipes=scandir("images/showcase"); 
-		if(count($recipes)<3){
-			echo("The folder doesn't contains any images"); 
-		}
-		else{
-			?>
-			<div id="showcase-arrow-previous" class="showcase"> </div>
-			<div id="showcase" class="showcase">
-				<!-- Each child div in #showcase with the class .showcase-slide represents a slide. -->
-				<?php
-				for($i=2; $i<count($recipes); $i++){
-					$currentPath="images/showcase/".$recipes[$i]; 
+if($isconnected){
+	print_page();
+}
+
+function print_page(){
+?>
+	<div style="width: 845px; margin: auto;">
+		
+		<!-- This is the button used to switch between One Page and Slideshow. -->
+		<?php 
+		include("data.php");
+		
+		if($numberOfRecipe>0){
+			$allPath=array();
+			$recipes=scandir("images/showcase"); 
+			if(count($recipes)<3){
+				echo("The folder doesn't contains any images"); 
+			}
+			else{
 				?>
-				<div class="showcase-slide">
-					<!-- Put the slide content in a div with the class .showcase-content. -->
-					<div class="showcase-content">
-						<div class="showcase-image">
-						<img src="<?php echo($currentPath);?>" alt="<?php echo("Image ".$i);?>" />
+				<div id="showcase-arrow-previous" class="showcase"> </div>
+				<div id="showcase" class="showcase">
+					<!-- Each child div in #showcase with the class .showcase-slide represents a slide. -->
+					<?php
+					for($i=2; $i<count($recipes); $i++){
+						$currentPath="images/showcase/".$recipes[$i]; 
+					?>
+					<div class="showcase-slide">
+						<!-- Put the slide content in a div with the class .showcase-content. -->
+						<div class="showcase-content">
+							<div class="showcase-image">
+							<img src="<?php echo($currentPath);?>" alt="<?php echo("Image ".$i);?>" />
+							</div>
+						</div>
+						<!-- Put the thumbnail content in a div with the class .showcase-thumbnail -->
+						<div class="showcase-thumbnail">
+							<img src="<?php echo($currentPath);?>" alt="<?php echo($i);?>" width="140px" />		
 						</div>
 					</div>
-					<!-- Put the thumbnail content in a div with the class .showcase-thumbnail -->
-					<div class="showcase-thumbnail">
-						<img src="<?php echo($currentPath);?>" alt="<?php echo($i);?>" width="140px" />		
-					</div>
+					<?php
+					}
+					?>
 				</div>
+				
+				<div id="showcase-arrow-next" class="showcase"> </div>
 				<?php
-				}
-				?>
-			</div>
-			
-			<div id="showcase-arrow-next" class="showcase"> </div>
-			<?php
+			}
+				
 		}
-			
-	}
-	else{
-		echo ("File can't be read");
-	}
-?>
-</div>
-</br>
-	<div class="findme">
-		<a href="#">Find me a recipe</a>
+		else{
+			echo ("File can't be read");
+		}
+	?>
 	</div>
 	</br>
-	<div class="helpme">
-		<a href="#">Help me to cook</a>
-	</div>
+		<div class="findme">
+			<a href="#">Find me a recipe</a>
+		</div>
+		</br>
+		<div class="helpme">
+			<a href="#">Help me to cook</a>
+		</div>
 
-	<div class="findmy">
-		<a href="#">Find my recipe</a>
-	</div>
-</div>      
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-<footer>
-SmartCooker
-</footer>
-
+		<div class="findmy">
+			<a href="#">Find my recipe</a>
+		</div>
+	</div>      
+	</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+	</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+	<footer>
+	SmartCooker
+	</footer>
+<?php 
+}
+?>
 </body>
 </html>
