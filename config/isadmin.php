@@ -13,7 +13,7 @@ if (isset($_SESSION['login'])) {
 			// User hasn't been recognized as a type "admin"
 			echo '<body onLoad="alert(\'Vous ne pouvez accéder à cette page par manque de droits\')">';
 			// Then we redirect to home page
-			echo '<meta http-equiv="refresh" content="0;URL=menu_user.php"/>';
+			echo '<meta http-equiv="refresh" content="0;URL=../connectionFrame.php"/>';
 			$isadmin=false;
 		}
 		
@@ -23,7 +23,7 @@ if (isset($_SESSION['login'])) {
 else {
 		echo '<body onLoad="alert(\'Veuillez vous connecter pour accéder à cette page.\')">';
 		// Then we redirect to home page
-		echo '<meta http-equiv="refresh" content="0;URL=index.php;charset=utf8_decode">';
+		echo '<meta http-equiv="refresh" content="0;URL=../connectionFrame.php;charset=utf8_decode">';
 		$isadmin=false;
 }
 

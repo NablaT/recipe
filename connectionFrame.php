@@ -5,28 +5,27 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<link rel="stylesheet" type="text/css" href="login.css">
+	<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body>
 
 
 <?php 
-//On démarre la session 
+//We start the session
 session_start();
 $isconnected=true;
-// On récupère nos variables de session
+// We get back our session variables
 if (isset($_SESSION['login'])) {
-		//On vérifie bien que la personne connectée est un admin.
+		//We verify user types
 		if(strcmp($_SESSION['type'],'admin')!=0 && strcmp($_SESSION['type'],'user')!=0){
 			print_page();
 		}
 		else if(strcmp($_SESSION['type'],'admin')==0){
-			header('location:../menu.php');
+			header('location:menu.php');
 		}
 		else if(strcmp($_SESSION['type'],'user')==0){
-			header('location:../menu.php');
+			header('location:menu.php');
 		}
-		// On teste pour voir si nos variables ont bien été enregistrées
 }
 else {
 		print_page();
