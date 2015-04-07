@@ -98,9 +98,7 @@ $(document).ready(function()
 </div>
 </br>
 	<div class="findme">
-	<?php $form=$this->beginWidget('CActiveForm', array('id'=>'display-form','action' => 
-'/site/display','enableAjaxValidation'=>false,'htmlOptions' => array('enctype' => 'multipart/form-data'),)); ?>
-		<a href="/protected/views/site/findMeView.php">Find me a recipe</a>
+		<a href="#">Find me a recipe</a>
 	</div>
 	</br>
 	<div class="helpme">
