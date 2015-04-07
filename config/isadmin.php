@@ -2,27 +2,27 @@
 
 
 <?php 
-//On démarre la session 
+//We start the session 
 session_start();
 $isadmin=true;
 
-// On récupère nos variables de session
+// We take session variables
 if (isset($_SESSION['login'])) {
-		//On vérifie bien que la personne connectée est un admin.
+		//We verify if user is a type "admin" 
 		if(strcmp($_SESSION['type'],'admin')!=0){
-			// Le visiteur n'a pas été reconnu comme étant un admin de notre site. On utilise alors un petit javascript lui signalant ce fait
+			// User hasn't been recognized as a type "admin"
 			echo '<body onLoad="alert(\'Vous ne pouvez accéder à cette page par manque de droits\')">';
-			// puis on le redirige vers la page d'accueil
+			// Then we redirect to home page
 			echo '<meta http-equiv="refresh" content="0;URL=menu_user.php"/>';
 			$isadmin=false;
 		}
 		
 	session_cache_limiter('private_no_expire, must-revalidate');
-		// On teste pour voir si nos variables ont bien été enregistrées
+	// We test to verify if we save our variables
 }
 else {
 		echo '<body onLoad="alert(\'Veuillez vous connecter pour accéder à cette page.\')">';
-		// puis on le redirige vers la page d'accueil
+		// Then we redirect to home page
 		echo '<meta http-equiv="refresh" content="0;URL=index.php;charset=utf8_decode">';
 		$isadmin=false;
 }
