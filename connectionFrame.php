@@ -38,7 +38,7 @@ function print_page(){
 		<div class="container">
 		  <div class="login">
 			<h1>Connexion</h1>
-			<form action="login.php" method="post" class="label-top">
+			<form action="config/login.php" method="post" class="label-top">
 			  <p><input type="text" name="login" value="" placeholder="Identifiant"></p>
 			  <p><input type="password" name="pwd" value="" placeholder="Mot de passe"></p>
 			  <p class="submit"><input type="submit" name="commit" value="Se connecter"></p>

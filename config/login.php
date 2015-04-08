@@ -8,6 +8,7 @@ $pwd = $_POST['pwd'];
 ?>
 
 <?php
+	
 	$num=0;
     @mysql_connect($serveurBD,
                  $nomUtilisateur,
@@ -36,7 +37,7 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		// We verify form informations: login/password correct.
 		if ($num > 0 ){
 				// In that case, everything is okay, we can start session
-
+				
 				// We start it
 				session_start ();
 				// We save users paramters as session variables ($login et $pwd) 
@@ -57,6 +58,7 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 
 		}
 		else {
+			
 			// User hasn't been recognized as member
 			echo '<body onLoad="alert(\'Membre non reconnu, veuillez vérifier votre login et password\')">';
 			// Then we redirect him to login page.
