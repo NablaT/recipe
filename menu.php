@@ -102,19 +102,20 @@ if($isconnected){
 		else{
 			echo ("File can't be read");
 		}
+	include("text/menu_text.php");
 	?>
 	</div>
 	</br>
 		<div class="findme">
-			<a href="#">Find me a recipe</a>
+			<a href="#"><?php echo($findmerecipe);?></a>
 		</div>
 		</br>
 		<div class="helpme">
-			<a href="#">Help me to cook</a>
+			<a href="#"><?php echo($helpmetocook);?></a>
 		</div>
 
 		<div class="findmy">
-			<a href="#">Find my recipe</a>
+			<a href="#"><?php echo($findmyrecipe);?></a>
 		</div>
 	</div>      
 	</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
