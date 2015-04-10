@@ -51,10 +51,10 @@ $(document).ready(function()
 include 'config/isconnected.php';
 
 if($isconnected){
-	print_page();
+ print_page();
 }
 
-function print_page(){
+ function print_page(){
 ?>
 	<div style="width: 845px; margin: auto;">
 		

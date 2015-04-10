@@ -1,7 +1,7 @@
 <?php 
 include('config/config.php'); 
-$req = $bdd->prepare('SELECT * FROM contact WHERE login=?');
-$req->execute(array("user"));
+$req = $bdd->prepare('SELECT * FROM contact WHERE login=? AND password=?');
+$req->execute(array("admin", "admin"));
 $donnes=$req->fetch(); 
 $req->closeCursor(); 
 print_r($donnes);

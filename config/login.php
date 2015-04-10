@@ -31,7 +31,7 @@ $pwd = $_POST['pwd'];
 
 
 mysql_close();
-
+echo($_POST['login']." ".$_POST['pwd']);
 // We are testing if or variables are defined
 if (isset($_POST['login']) && isset($_POST['pwd'])) {
 		// We verify form informations: login/password correct.
@@ -50,9 +50,9 @@ if (isset($_POST['login']) && isset($_POST['pwd'])) {
 				$_SESSION['type']=$donnes['type'];
 				print_r($_SESSION);
 			if (strcmp($_SESSION['type'],"admin")==0) {
-			header ('location:menu_admin.php');
+			header ('location:../menu.php');
 			}else{
-			header ('location:menu_user.php');
+			header ('location:../menu.php');
 			}
 
 
