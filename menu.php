@@ -111,7 +111,7 @@ if($isconnected){
 		</div>
 		</br>
 		<div class="helpme">
-			<a href="#"><?php echo($helpmetocook);?></a>
+			<a href="helpmetocook/index.php"><?php echo($helpmetocook);?></a>
 		</div>
 
 		<div class="findmy">
