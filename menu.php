@@ -3,6 +3,7 @@
 <head>
 <title> Menu </title>
 <link rel="stylesheet" href="css/menu.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
 <script type="text/javascript" src="jquery.aw-showcase.js"></script>
 <script type="text/javascript">
