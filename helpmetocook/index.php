@@ -10,6 +10,7 @@
 
 <?php
 include('../text/menuhelpme_text.php');
+//To fix textarea: resize:none; 
 ?>
 <h1> <?php echo($title);?> </h1>
 <form method="post" action="recipelist.php">
@@ -18,7 +19,6 @@ include('../text/menuhelpme_text.php');
 	<textarea name="textarea"> </textarea >
 	</br>
 	<?php echo($option);?></br>
-	<form method="post" action="traitement.php">
     <input type="radio" name="option" value="1error" id="1error" /> <label for="1error"> 1 </label>
     <input type="radio" name="option" value="2error" id="2error" /> <label for="2error">2</label>
     <input type="radio" name="option" value="3error" id="3error" /> <label for="3error">3</label>
