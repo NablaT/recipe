@@ -3,14 +3,18 @@ $xmlstr = <<<XML
 <?xml version='1.0' standalone='yes'?>
 <ingredients>
 	<ingredients>
-		 <Ban1>
+		 <id name="Ban1">
 			<english> banana </english>
 			<french> banane </french>
-		 </Ban1>
-		 <Kiw1>
+		 </id>
+		 <id name="Kiw1">
 			<english> kiwi </english>
 			<french> kiwi </french>
-		</Kiw1>
+		</id>
+		 <id name="App1">
+			<english> apple </english>
+			<french> pomme </french>
+		</id>
 	</ingredients>
 </ingredients>
 XML;

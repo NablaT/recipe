@@ -6,7 +6,7 @@ $donnes=$req->fetch();
 $req->closeCursor(); 
 print_r($donnes);
 
-$req = $bdd->prepare('INSERT INTO contact(login, password, firstname,lastname,type) VALUES(:login, :password, :firstname,:lastname,:type)');
+$req = $bdd->prepare('INSERT INTO recipe(Name, Idingredient, Quantity,Action,Step,Idrecipe) VALUES(:name, :idingredient, :quantity,:action,:idrecipe)');
 $req->execute(array(
 	'login' => "admin",
 	'password' => "admin",
