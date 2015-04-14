@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-	<title>Ajout d'une formulation</title>
+	<title> <?php echo($titleadd);?></title>
 	<link rel="stylesheet" type="text/css" href="../css/admin/framemanagerecipe.css">
 
 </head>
@@ -22,9 +22,11 @@ function print_page(){
 <div id="formContainer">
 <form method="post" action="write_recipe.php" id="menu">
     <p>
-        <label><?php echo($name);?> </label> : <br/><input type="text" name="nom" id="nom" placeholder="nom"/>
-		<br/>
-        <label><?php echo($nbofingredients);?> </label> : <br/><input type="number" name="step" id="step"  placeholder="step"/>
+        <label><?php echo($name);?> </label> : <br/><input type="text" name="nom" id="nom" placeholder="Name"/>
+		<br/><br/>
+        <label><?php echo($nbofingredients);?> </label> : <br/><input type="number" name="" id="number"  />
+		<br/><br/>
+        <label><?php echo($nbofsteps);?> </label> : <br/><input type="number" name="steps" id="steps" />
 	</p>
 	<input type="submit" value="Continuer" />
 </form>

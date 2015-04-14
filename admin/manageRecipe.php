@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 	<title> <?php echo($title);?></title>
-	<link rel="stylesheet" type="text/css" href="../css/formu.css">
+	<link rel="stylesheet" type="text/css" href="../css/admin/recipe.css">
 
 </head>
 <body>
@@ -22,10 +22,10 @@ function print_page(){
 
 <div id="wrapper">
     <ul class="menu">
-        <li class="item1"><a href="add_old_formu.php"><?php echo($first);?></a></li>
-        <li class="item2"><a href="edit_old_formu.php"><?php echo($second);?></a></li>
-        <li class="item3"><a href="delete_old_formu.php"><?php echo($third);?></a></li>
-		<li class="item4"><a href="menu_admin.php"> <?php echo($home);?></a></li>
+        <li class="item1"><a href="add/add_recipe.php"><?php echo($first);?></a></li>
+        <li class="item2"><a href="edit/edit_recipe.php"><?php echo($second);?></a></li>
+        <li class="item3"><a href="delete/delete_recipe.php"><?php echo($third);?></a></li>
+		<li class="item4"><a href="../menu.php"> <?php echo($home);?></a></li>
 	</ul>
 </div>
 <?php
