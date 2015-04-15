@@ -2,20 +2,27 @@
 include('config/config.php'); 
 
 
-$file='D:\xampp\htdocs\recipe\text/fruitslist.txt';
+$file='D:\xampp\htdocs\recipe\text/spicies.txt';
 $banane="Banane"; 
 if(is_file($file)){
 		if($tablines=file($file)){
 			echo(count($tablines));
 			print_r($tablines);
-			for($i=1;$i<count($tablines);$i++){						
-				$req = $bdd->prepare('INSERT INTO ingredient(Name, Description, Idingredient) VALUES(:name, :description, :idingredient)');
+			for($i=1;$i<count($tablines);$i++){		
+				$reponse = $bdd->prepare('UPDATE ingredient SET Description=:description WHERE Name=:name');
+				$reponse->execute(array(
+						'description' => "spicy",
+						'name' => $tablines[$i]
+					)); 
+				$reponse->closeCursor();
+				
+				/*$req = $bdd->prepare('INSERT INTO ingredient(Name, Description, Idingredient) VALUES(:name, :description, :idingredient)');
 				$req->execute(array(
 					'name' => $tablines[$i],
-					'description' => "vegetable",
+					'description' => "spicy",
 					'idingredient' => substr($tablines[$i],0,3)."1"
 				));
-				$req->closeCursor();
+				$req->closeCursor();*/
 			}
 		}
 		else{
