@@ -12,7 +12,7 @@ if(is_file($file)){
 				$req = $bdd->prepare('INSERT INTO ingredient(Name, Description, Idingredient) VALUES(:name, :description, :idingredient)');
 				$req->execute(array(
 					'name' => $tablines[$i],
-					'description' => "fruit",
+					'description' => "vegetable",
 					'idingredient' => substr($tablines[$i],0,3)."1"
 				));
 				$req->closeCursor();
