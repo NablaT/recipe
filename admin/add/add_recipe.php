@@ -3,20 +3,20 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 	<title> <?php echo($titleadd);?></title>
-	<link rel="stylesheet" type="text/css" href="../css/admin/framemanagerecipe.css">
+	<link rel="stylesheet" type="text/css" href="../../css/admin/framemanagerecipe.css">
 
 </head>
 <body>
 
 <?php 
-include '../config/isadmin.php';
+include '../../config/isadmin.php';
 
 if($isadmin){
 	print_page();
 }
 
 function print_page(){
-	include('../text/managerecipe_text.php');
+	include('../../text/managerecipe_text.php');
 ?>
 <h2> <?php echo($titleadd);?> </h2>
 <div id="formContainer">

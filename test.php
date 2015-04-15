@@ -1,5 +1,33 @@
 <?php 
 include('config/config.php'); 
+
+
+$file='D:\xampp\htdocs\recipe\text/fruitslist.txt';
+$banane="Banane"; 
+if(is_file($file)){
+		if($tablines=file($file)){
+			echo(count($tablines));
+			print_r($tablines);
+			for($i=1;$i<count($tablines);$i++){						
+				$req = $bdd->prepare('INSERT INTO ingredient(Name, Description, Idingredient) VALUES(:name, :description, :idingredient)');
+				$req->execute(array(
+					'name' => $tablines[$i],
+					'description' => "fruit",
+					'idingredient' => substr($tablines[$i],0,3)."1"
+				));
+				$req->closeCursor();
+			}
+		}
+		else{
+			echo("pouet");
+		}
+}
+else{
+	echo("repouet");
+}
+
+
+/*
 $req = $bdd->prepare('SELECT * FROM contact WHERE login=? AND password=?');
 $req->execute(array("admin", "admin"));
 $donnes=$req->fetch(); 
@@ -14,5 +42,7 @@ $req->execute(array(
 	'lastname' =>"Pourtier",
 	'type'=>"admin"
 ));
-$req->closeCursor();
+$req->closeCursor();*/
+
+
 ?>

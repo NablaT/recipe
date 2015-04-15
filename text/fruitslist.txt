@@ -57,17 +57,17 @@ Papaya
 Passionfruit
 Peach
 Pear
-Williams pear or Bartlett pear
+Williams pear 
 Persimmon
 Physalis
-Plum/prune (dried plum)
+Plum/prune 
 Pineapple
 Pomegranate
 Pomelo
 Purple Mangosteen
 Quince
 Raspberry
-Western raspberry (blackcap)
+Western raspberry
 Rambutan
 Redcurrant
 Salal berry
@@ -77,4 +77,4 @@ Star fruit
 Strawberry
 Tamarillo
 Ugli fruit
-Watermelon 
+Watermelon
