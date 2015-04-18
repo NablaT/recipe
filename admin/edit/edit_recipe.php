@@ -1,4 +1,12 @@
-<!DOCTYPE>
+<?php 
+include 'isadmin.php';
+
+if($isadmin){
+	print_page();
+}
+
+function print_page(){
+	?><!DOCTYPE>
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
@@ -8,13 +16,6 @@
 </head>
 
 <?php 
-include 'isadmin.php';
-
-if($isadmin){
-	print_page();
-}
-
-function print_page(){
 ?>
 <body>
 <h2> Edition d'une formulation</h2>

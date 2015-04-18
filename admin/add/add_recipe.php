@@ -1,14 +1,4 @@
-﻿<!DOCTYPE>
-<html lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-	<title> <?php echo($titleadd);?></title>
-	<link rel="stylesheet" type="text/css" href="../../css/admin/framemanagerecipe.css">
-
-</head>
-<body>
-
-<?php 
+﻿<?php 
 include '../../config/isadmin.php';
 
 if($isadmin){
@@ -18,6 +8,18 @@ if($isadmin){
 function print_page(){
 	include('../../text/managerecipe_text.php');
 ?>
+
+<!DOCTYPE>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title> <?php echo($titleadd);?></title>
+	<link rel="stylesheet" type="text/css" href="../../css/admin/framemanagerecipe.css">
+
+</head>
+<body>
+
+
 <h2> <?php echo($titleadd);?> </h2>
 <div id="formContainer">
 <form method="post" action="write_recipe.php" id="menu">

@@ -1,9 +1,14 @@
  <?php
  //Menu
- $title="Manage Recipe"; 
+ $title="Manage Database"; 
+ $recipe="Recipe";
  $first="Add a recipe";
  $second="Edit a recipe";
  $third="Delete recipe";
+ $ingredients="Ingredients";
+ $ingfirst="Add a recipe";
+ $ingsecond="Edit a recipe";
+ $ingthird="Delete recipe";
  $home="Home";
  
  // Add a recipe 
@@ -19,5 +24,8 @@
  $errorRecipeExist="The name of the recipe already exist";
  $previouspage="Previous page";
  $menu="Menu";
+ 
+ //Ingredients
+ 
  
  ?>
