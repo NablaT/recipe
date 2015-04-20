@@ -1,15 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3/org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
-	<meta http-equiv="Content-Language" content="fr"/>
-	<head>
-        <title>Menu principal</title>
-         
-        <link rel="stylesheet" href="../styles.css" type="text/css"/>
-		   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    </head>
-<body>
+
 <?php 
 include '../config/isadmin.php';
 
@@ -20,6 +9,18 @@ if($isadmin){
 function print_page(){
 	include('../text/managerecipe_text.php');
 ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3/org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+	<meta http-equiv="Content-Language" content="fr"/>
+	<head>
+	<title> <?php echo($title);?></title>
+         
+        <link rel="stylesheet" href="../css/admin/recipe.css" type="text/css"/>
+		   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    </head>
+<body>
 <h2> Menu </h2>
 	<div id="wrapper">
     <ul class="menu">
