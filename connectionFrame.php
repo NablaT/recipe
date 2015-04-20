@@ -1,13 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
-<html>
-<head>
-<title>Connexion</title>
 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-	<link rel="stylesheet" type="text/css" href="css/login.css">
-</head>
-<body>
 
 
 <?php 
@@ -34,14 +25,25 @@ else {
 
 
 function print_page(){
+	include("text/config/connection.php");
 	?>
-		<div class="container">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title><?php echo($connection)?></title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+</head>
+<body>
+	<div class="container">
 		  <div class="login">
-			<h1>Connexion</h1>
+			<h1><?php echo($connection)?></h1>
 			<form action="config/login.php" method="post" class="label-top">
 			  <p><input type="text" name="login" value="" placeholder="Identifiant"></p>
 			  <p><input type="password" name="pwd" value="" placeholder="Mot de passe"></p>
-			  <p class="submit"><input type="submit" name="commit" value="Se connecter"></p>
+			  <p class="submit"><input type="submit" name="commit" value="<?php echo($login)?>"></p>
 			</form>
 		  </div>
 		</div>
