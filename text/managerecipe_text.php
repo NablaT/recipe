@@ -10,6 +10,7 @@
  $ingsecond="Edit a recipe";
  $ingthird="Delete recipe";
  $home="Home";
+ $logout="Log out";
  
  // Add a recipe 
  $titleadd="Add a recipe"; 
