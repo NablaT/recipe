@@ -1,14 +1,14 @@
  <?php
  //Menu
  $title="Manage Database"; 
- $recipe="Recipe";
+ $recipe="Recipes";
  $first="Add a recipe";
  $second="Edit a recipe";
  $third="Delete recipe";
  $ingredients="Ingredients";
- $ingfirst="Add a recipe";
- $ingsecond="Edit a recipe";
- $ingthird="Delete recipe";
+ $ingfirst="Add an ingredient";
+ $ingsecond="Edit an ingredient";
+ $ingthird="Delete an ingredient";
  $home="Home";
  $logout="Log out";
  

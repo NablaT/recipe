@@ -1,15 +1,8 @@
-<!DOCTYPE>
-<html lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-	<title>Ajout d'une formulation</title>
-	<link rel="stylesheet" type="text/css" href="table.css">
 
-</head>
 
 <?php 
 session_cache_limiter('private_no_expire, must-revalidate');
-include 'isadmin.php';
+include ('../../config/isadmin.php');
 
 if($isadmin){
 	print_page();
@@ -17,8 +10,17 @@ if($isadmin){
 
 function print_page(){
 
-	include ('../config/isadmin.php');
-	include('../text/managerecipe_text.php');
+	include('../../text/recipe/managerecipe_text.php');
+?>
+<!DOCTYPE>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title> <?php echo($titleadd);?></title>
+	<link rel="stylesheet" type="text/css" href="../../../css/admin/add.css">
+
+</head>
+<?php
 	if($_POST['step']<=0){
 		?>
 		<h3> <?php echo($errornbsteps);?> <br/>
@@ -27,7 +29,7 @@ function print_page(){
 		<meta http-equiv="refresh" content="4; URL=add_recipe.php">
 		<?php
 	}
-	else if(formuexists($bdd)){
+	else if(recipeexists($bdd)){
 		?>
 		<h3> <?php echo($errorRecipeExist);?><br/>
 		</h3>
@@ -74,9 +76,9 @@ function print_page(){
 	<?php
 	}
 }
-	function formuexists($bdd){
-		$req=$bdd->prepare('SELECT COUNT(*) FROM corpsrecette WHERE RefVrac=? AND Idref=?');
-		$req->execute(array($_POST['nom'],$_POST['nom']));
+	function recipeexists($bdd){
+		$req=$bdd->prepare('SELECT COUNT(*) FROM recipe WHERE Name=?');
+		$req->execute(array($_POST['nom']));
 		$reponse=$req->fetch();
 		return ($reponse[0]!=0);
 	}
