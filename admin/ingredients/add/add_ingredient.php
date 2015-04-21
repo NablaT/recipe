@@ -26,6 +26,7 @@ function print_page(){
     <p>
         <label><?php echo($name);?> </label> : <br/><input type="text" name="nom" id="nom" placeholder="Name"/>
 		<br/><br/>
+		<label><?php echo($typeofingredient);?> </label> :<br/>
         <select name="<?php echo($type)?>" id="<?php echo($type)?>">
 			<option value="fruit"><?php echo($fruit)?></option> 
 			<option value="vegetable"> <?php echo($vegetable)?></option>

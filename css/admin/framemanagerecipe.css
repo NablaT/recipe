@@ -13,7 +13,7 @@ label{
 	color:#e97d68; /*#fff;*/
 }
 
-a {
+a, input {
     text-decoration: none;
 }
 ul,
@@ -22,7 +22,7 @@ ul ul {
     padding: 0;
     list-style: none;
 }
-a {
+a, input {
 	display:table;
 	margin:20px auto;
 	padding:10px 40px;

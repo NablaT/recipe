@@ -11,6 +11,7 @@
  $ingthird="Delete an ingredient";
  $home="Home";
  $logout="Log out";
+ $next="Next"; 
  
  // Add a recipe 
  $titleadd="Add a recipe"; 

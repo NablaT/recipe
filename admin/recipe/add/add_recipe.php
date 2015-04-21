@@ -30,7 +30,7 @@ function print_page(){
 		<br/><br/>
         <label><?php echo($nbofsteps);?> </label> : <br/><input type="number" name="steps" id="steps" />
 	</p>
-	<input type="submit" value="Continuer" />
+	<input type="submit" value="<?php echo($next);?>" />
 </form>
 
 	<a href="../manageRecipe.php"> <?php echo($home);?> </a>
