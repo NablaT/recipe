@@ -1,7 +1,24 @@
 <?php 
 include('config/config.php'); 
+$cpt=array();
+$word="Kiwi";
+/*$true=strpos("Kiwi fruit",$word);
+echo($true);*/
+$reponse=$bdd->query('SELECT * FROM ingredient');
 
-
+while($donnes=$reponse->fetch()){
+	//echo($donnes['Name']);
+	if(strpos($donnes['Name'], $word)==0){
+		print_r($donnes);
+	}
+}
+print_r($cpt);
+/*if($cpt[0]==0){
+	echo("oui");
+	//array_push($savebadingredients,$saveingredients[$i]);
+}*/
+$reponse->closeCursor();
+/*
 $file='D:\xampp\htdocs\recipe\text/spicies.txt';
 $banane="Banane"; 
 

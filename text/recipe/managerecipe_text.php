@@ -31,6 +31,9 @@
  //Verify recipe
  $errorquantity="Input numbers for quantity are negative or equal to zero";
  $fillthemagain="Please fill them again";
+ $erroringredient="Do(es) not exist in the database ";
+ $recipe="Recipe";
+ $confirmation="has been correctly added";
  
  //Write a recipe
  $errornbsteps="The number of steps isn't correct. ";
