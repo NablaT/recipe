@@ -1,4 +1,36 @@
-<?php 
+<?php
+include('config/config.php');
+
+$xmlstr = '<?xml version="1.0" encoding="utf-8" ?'.'>'.
+'<ingredients>
+    <ingredients>
+         <id name="Ban1">
+            <english> banana </english>
+            <french> banane </french>
+         </id>
+         <id name="Kiw1">
+            <english> kiwi </english>
+            <french> kiwi </french>
+        </id>
+         <id name="App1">
+            <english> apple </english>
+            <french> pomme </french>
+        </id>
+    </ingredients>
+</ingredients>';
+ 
+ 
+$ingredients= new SimpleXMLElement($xmlstr);
+ 
+$ingredientlist=explode(' ','Debut SuiteDebut Milieu SuiteMilieu Fin');
+for($i=0;$i<count($ingredientlist); $i++){
+echo 'i: '.$i.'<br>';
+    foreach($ingredients->ingredients->id as $curIngredient){ //ici je ne rentre pas
+        echo $curIngredient['name'].'<br>';
+    }
+}
+
+/*
 include('config/config.php'); 
 $cpt=array();
 $word="";
@@ -14,7 +46,7 @@ print_r($donnes);
 /*if($cpt[0]==0){
 	echo("oui");
 	//array_push($savebadingredients,$saveingredients[$i]);
-}*/
+}
 $reponse->closeCursor();
 /*
 $file='D:\xampp\htdocs\recipe\text/spicies.txt';

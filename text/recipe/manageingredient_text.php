@@ -11,4 +11,11 @@
  $other="Other";
  $addingredient="Add ingredient";
  $home="Home";
+ 
+  //Write a recipe
+ $fillitagain="Please fill it again"; 
+ $redirection="Redirection ...";
+ $errorIngredientExist="The name of the ingredient already exist";
+ $previouspage="Previous page";
+ $menu="Menu";
  ?>

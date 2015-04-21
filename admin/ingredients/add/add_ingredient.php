@@ -22,9 +22,9 @@ function print_page(){
 
 <h2> <?php echo($titleadd);?> </h2>
 <div id="formContainer">
-<form method="post" action="write_recipe.php" id="menu">
+<form method="post" action="write_ingredient.php" id="menu">
     <p>
-        <label><?php echo($name);?> </label> : <br/><input type="text" name="nom" id="nom" placeholder="Name"/>
+        <label><?php echo($name);?> </label> : <br/><input type="text" name="name" id="name" placeholder="Name"/>
 		<br/><br/>
 		<label><?php echo($typeofingredient);?> </label> :<br/>
         <select name="<?php echo($type)?>" id="<?php echo($type)?>">
