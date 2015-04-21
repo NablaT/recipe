@@ -79,7 +79,6 @@ function print_page(){
 					array_push($savebadingredients,$saveingredients[$i]);
 				}
 				$reponse->closeCursor();
-				
 			}
 			return $savebadingredients;
 		}

@@ -33,9 +33,9 @@ function print_page(){
 		</li>
         <li class="item2"><a href="#"><?php echo($ingredients);?><span>3</span></a>
 			<ul>
-				<li class="subitem1"><a href="ingredient/add/add_recipe.php"><?php echo($ingfirst);?></a></li>
-                <li class="subitem2"><a href="ingredient/edit/edit_recipe.php"><?php echo($ingsecond);?></a></li>
-                <li class="subitem3"><a href="ingredient/delete/delete_recipe.php"><?php echo($ingthird);?></a></li>
+				<li class="subitem1"><a href="ingredients/add/add_ingredient.php"><?php echo($ingfirst);?></a></li>
+                <li class="subitem2"><a href="ingredients/edit/edit_ingredient.php"><?php echo($ingsecond);?></a></li>
+                <li class="subitem3"><a href="ingredients/delete/delete_ingredient.php"><?php echo($ingthird);?></a></li>
 			</ul>
 		</li>
         

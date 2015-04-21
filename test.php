@@ -1,18 +1,16 @@
 <?php 
 include('config/config.php'); 
 $cpt=array();
-$word="Kiwi";
-/*$true=strpos("Kiwi fruit",$word);
-echo($true);*/
-$reponse=$bdd->query('SELECT * FROM ingredient');
+$word="";
+$true=strripos("Kiwi fruit",$word);
+echo($true);
 
-while($donnes=$reponse->fetch()){
-	//echo($donnes['Name']);
-	if(strpos($donnes['Name'], $word)==0){
-		print_r($donnes);
-	}
-}
-print_r($cpt);
+
+$reponse=$bdd->prepare('SELECT * FROM ingredient WHERE Idingredient=?');
+$reponse->execute(array($word));
+$donnes=$reponse->fetch();
+print_r($donnes);
+
 /*if($cpt[0]==0){
 	echo("oui");
 	//array_push($savebadingredients,$saveingredients[$i]);

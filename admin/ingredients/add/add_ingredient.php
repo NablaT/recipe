@@ -6,7 +6,7 @@ if($isadmin){
 }
 
 function print_page(){
-	include('../../../text/recipe/managerecipe_text.php');
+	include('../../../text/recipe/manageingredient_text.php');
 ?>
 
 <!DOCTYPE>
@@ -26,14 +26,18 @@ function print_page(){
     <p>
         <label><?php echo($name);?> </label> : <br/><input type="text" name="nom" id="nom" placeholder="Name"/>
 		<br/><br/>
-        <label><?php echo($nbofingredients);?> </label> : <br/><input type="number" name="number" id="number"/>
-		<br/><br/>
-        <label><?php echo($nbofsteps);?> </label> : <br/><input type="number" name="steps" id="steps" />
-	</p>
-	<input type="submit" value="Continuer" />
+        <select name="<?php echo($type)?>" id="<?php echo($type)?>">
+			<option value="fruit"><?php echo($fruit)?></option> 
+			<option value="vegetable"> <?php echo($vegetable)?></option>
+			<option value="meat"> <?php echo($meat)?></option>
+			<option value="liquid"> <?php echo($liquid)?></option>
+			<option value="spicy"> <?php echo($spicy)?></option>
+			<option value="other"> <?php echo($other)?></option>
+		</select>	</p>
+	<input type="submit" value="<?php echo($addingredient);?>" />
 </form>
 
-	<a href="../manageRecipe.php"> <?php echo($home);?> </a>
+	<a href="../../manageRecipe.php"> <?php echo($home);?> </a>
 </div>
 </script>
 <?php
