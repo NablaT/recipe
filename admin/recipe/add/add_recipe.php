@@ -26,7 +26,7 @@ function print_page(){
     <p>
         <label><?php echo($name);?> </label> : <br/><input type="text" name="nom" id="nom" placeholder="Name"/>
 		<br/><br/>
-        <label><?php echo($nbofingredients);?> </label> : <br/><input type="number" name="" id="number"  />
+        <label><?php echo($nbofingredients);?> </label> : <br/><input type="number" name="number" id="number"/>
 		<br/><br/>
         <label><?php echo($nbofsteps);?> </label> : <br/><input type="number" name="steps" id="steps" />
 	</p>

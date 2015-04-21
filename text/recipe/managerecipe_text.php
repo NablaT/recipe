@@ -18,6 +18,20 @@
  $nbofingredients="Number of ingredients";
  $nbofsteps="Number of steps";
  
+ //Write recipe
+ $ingredient="Ingredient";
+ $quantity="Quantity";
+ $steps="Steps";
+ $type="Type of measure";
+ $solid="g";
+ $liquid="ml";
+ $unity="unity";
+ $save="Save recipe";
+ 
+ //Verify recipe
+ $errorquantity="Input numbers for quantity are negative or equal to zero";
+ $fillthemagain="Please fill them again";
+ 
  //Write a recipe
  $errornbsteps="The number of steps isn't correct. ";
  $fillitagain="Please fill it again"; 

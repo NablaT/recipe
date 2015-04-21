@@ -2,15 +2,16 @@
 
 <?php 
 session_cache_limiter('private_no_expire, must-revalidate');
-include ('../../config/isadmin.php');
+include ('../../../config/isadmin.php');
 
 if($isadmin){
 	print_page();
 }
 
 function print_page(){
-
-	include('../../text/recipe/managerecipe_text.php');
+	include('../../../config/config.php');
+	include('../../../text/recipe/managerecipe_text.php');
+	//print_r($_POST);
 ?>
 <!DOCTYPE>
 <html lang="en">
@@ -21,7 +22,7 @@ function print_page(){
 
 </head>
 <?php
-	if($_POST['step']<=0){
+	if($_POST['steps']<=0){
 		?>
 		<h3> <?php echo($errornbsteps);?> <br/>
 		<?php echo($fillitagain);?></h3>
@@ -39,30 +40,31 @@ function print_page(){
 	}
 	else{
 		?> <h3> <?php echo($name);?>: <?php echo($_POST['nom']) ?><br/></h3>
-		<form method="post" action="verification_formu.php?refvrac=<?php echo($_POST['nom'])?>" onsubmit="return verifier(this);">
+		<form method="post" action="verification_recipe.php?name=<?php echo($_POST['nom'])?>" onsubmit="return verifier(this);">
 		<table id="pricetable">
 			<thead>
 				<tr>
-					<th class="choiceA">Matiere </th>
-					<th class="choiceC on">Pourcentage <br/>Quantité (kg/m3)</th>
-					<th class="choiceD">Type de matiere</th>
+					<th class="choiceA"><?php echo($ingredient);?>  </th>
+					<th class="choiceC on"><?php echo($quantity);?> </th>
+					<th class="choiceD"><?php echo($type)?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
-				for($i=0;$i<$_POST['step'];$i++){
-					$matiere="matiere".$i;
-					$pourcentage="pourcentage".$i;
-					$typematiere="typematiere".$i;
+				for($i=0;$i<$_POST['number'];$i++){
+					$ingredient="ingredient".$i;
+					$quantity="quantity".$i;
+					$type="type".$i;
 	
 				?>
 				<tr>
-					<td class="matiere"><input type="text" name="<?php echo($matiere)?>" id="<?php echo($matiere)?>"/></td>
-					<td class="pourcentage"><input type="text" name="<?php echo($pourcentage)?>" id="<?php echo($pourcentage)?>" /></td>
+					<td class="ingredient"><input type="text" name="<?php echo($ingredient)?>" id="<?php echo($matiere)?>"/></td>
+					<td class="quantity"><input type="text" name="<?php echo($quantity)?>" id="<?php echo($pourcentage)?>" /></td>
 					<td class="typematiere">
-					<select name="<?php echo($typematiere)?>" id="<?php echo($typematiere)?>">
-						<option value="matierepremiere">Matiere premiere</option> 
-						<option value="additifs"> Additif</option>
+					<select name="<?php echo($type)?>" id="<?php echo($type)?>">
+						<option value="matierepremiere"><?php echo($solid)?></option> 
+						<option value="additifs"> <?php echo($liquid)?></option>
+						<option value="additifs"> <?php echo($unity)?></option>
 					</select>
 				</tr>
 				<?php
@@ -70,9 +72,28 @@ function print_page(){
 				?>
 			</tbody>
 		</table><p>
-	<input type="submit" value="Enregistrer" /></p>
+		<table id="pricetable2">
+			<thead>
+				<tr>
+					<th class="choiceA"><?php echo($steps);?>  </th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				for($i=0;$i<$_POST['steps'];$i++){
+					$steps="steps".$i;	
+				?>
+				<tr>
+					<td class="steps"><input type="textarea" name="<?php echo($steps)?>" id="<?php echo($steps)?>"/></td>
+				</tr>
+				<?php
+				}
+				?>
+			</tbody>
+		</table><p>
+	<input type="submit" value="<?php echo($save)?>" /></p>
 	</form>
-	<a href="add_formu.php"> Page précédente</a>
+	<a href="add_recipe.php"><?php echo($previouspage)?></a>
 	<?php
 	}
 }
