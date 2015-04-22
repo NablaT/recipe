@@ -8,33 +8,35 @@ if($isadmin){
 
 function print_page(){
 	include('../../../config/config.php');
-	include('../../../text/recipe/manageingredient_text.php');
-	//print_r($_POST);
+	include('../../../text/ingredients/manageingredient_text.php');
+
 ?>
 <!DOCTYPE>
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 	<title> <?php echo($titleadd);?></title>
-	<link rel="stylesheet" type="text/css" href="../../../css/admin/add.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/admin/framemanagerecipe.css">
 
 </head>
 <?php
 	
 	if(ingredientexists($bdd)){
 		?>
-		<h3> <?php echo($errorIngredientExists);?><br/>
-		</h3>
+		<h2> <?php echo($errorIngredientExists);?><br/>
+		</h2>
 		<a href="add_ingredient.php"> <?php echo($previouspage);?> </a>
 		<a href="../managerecipe.php"> <?php echo($menu);?></a>
 		<?php
 	}
 	else{
-		print_r($_POST);
+
 		saveAll($bdd);
 	?>
-	<a href="add_recipe.php"><?php echo($previouspage)?></a>
-	
+	<h2> <?php echo($addmessage1.$_POST['name'].$addmessage2);?>
+	</h2>
+	<a href="add_ingredient.php"><?php echo($previouspage)?></a>
+	<a href="managerecipe.php"><?php echo($menu)?></a>
 </body>
 </html>
 	<?php
@@ -43,18 +45,18 @@ function print_page(){
 }
 	function ingredientexists($bdd){
 		$req=$bdd->prepare('SELECT COUNT(*) FROM ingredient WHERE Name=?');
-		$req->execute(array($_POST['nom']));
+		$req->execute(array($_POST['name']));
 		$reponse=$req->fetch();
 		return ($reponse[0]!=0);
 	}
 	
 	function saveAll($bdd){
-		$id=getId($bdd,1, $_POST['Name']);
+		$id=getId($bdd,1, $_POST['name']);
 		$req = $bdd->prepare('INSERT INTO ingredient(Name, Description, Idingredient) VALUES(:name, :description, :idingredient)');
 		$req->execute(array(
-			'name' => $tablines[$i],
-			'description' => "spicy",
-			'idingredient' => substr($tablines[$i],0,3)."1"
+			'name' => $_POST['name'],
+			'description' => $_POST['type'],
+			'idingredient' => $id
 		));
 		$req->closeCursor();
 	}
@@ -66,7 +68,6 @@ function print_page(){
 		$req->execute(array($id));
 		$reponse=$req->fetch();
 		$req->closeCursor();
-		print_r($reponse);
 		
 		if($reponse[0]==0){
 			return $id;

@@ -2,13 +2,17 @@
  //Menu
  $title="Manage Database"; 
  $recipe="Recipes";
- $first="Add a recipe";
- $second="Edit a recipe";
- $third="Delete recipe";
+ $addrecipe="Add a recipe";
+ $editrecipe="Edit a recipe";
+ $deleterecipe="Delete recipe";
+ $listrecipe="Recipes list";
+ $searchrecipe="Search a recipe";
  $ingredients="Ingredients";
- $ingfirst="Add an ingredient";
- $ingsecond="Edit an ingredient";
- $ingthird="Delete an ingredient";
+ $addingredient="Add an ingredient";
+ $editingredient="Edit an ingredient";
+ $deleteingredient="Delete an ingredient";
+ $listingredient="Ingredients list";
+ $searchingredient="Search an ingredient";
  $home="Home";
  $logout="Log out";
  $next="Next"; 

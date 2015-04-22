@@ -1,5 +1,10 @@
 <?php
 include('config/config.php');
+
+$reponse=$bdd->prepare('DELETE FROM ingredient WHERE Name = ?');
+$reponse->execute(array("kiwii"));
+$reponse->closeCursor();
+/*
 $string="Kiwii";
 $id=getId($bdd,1,$string);
 echo($id);
@@ -21,5 +26,5 @@ function getId($bdd, $cpt, $str){
 		return getId($bdd,$cpt,$str);
 	}
 	
-}
+}*/
 ?>

@@ -1,5 +1,5 @@
  <?php
- // Add a recipe 
+ ////////////////// Add an ingredient ////////////////////
  $titleadd="Add an ingredient"; 
  $name="Name";
  $typeofingredient="Type of ingredient";
@@ -11,11 +11,19 @@
  $other="Other";
  $addingredient="Add ingredient";
  $home="Home";
+ $type="type";
  
-  //Write a recipe
+  //Write an ingredient
  $fillitagain="Please fill it again"; 
  $redirection="Redirection ...";
- $errorIngredientExist="The name of the ingredient already exist";
+ $errorIngredientExists="The name of the ingredient already exist";
  $previouspage="Previous page";
  $menu="Menu";
+ $addmessage1="The ingredient ";
+ $addmessage2=" has been correctly added";
+ 
+ 
+ ////////////////// Edit an ingredient ///////////////////
+ 
+ 
  ?>

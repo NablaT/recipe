@@ -24,18 +24,22 @@ function print_page(){
 <h2> Menu </h2>
 	<div id="wrapper">
     <ul class="menu">
-	<li class="item1"><a href="#"><?php echo($recipe);?><span>3</span></a>
+	<li class="item1"><a href="#"><?php echo($recipe);?><span>5</span></a>
 			<ul>
-				<li class="subitem1"><a href="recipe/add/add_recipe.php"><?php echo($first);?></a></li>
-                <li class="subitem2"><a href="recipe/edit/edit_recipe.php"><?php echo($second);?></a></li>
-                <li class="subitem3"><a href="recipe/delete/delete_recipe.php"><?php echo($third);?></a></li>
+				<li class="subitem1"><a href="recipe/add/add_recipe.php"><?php echo($addrecipe);?></a></li>
+                <li class="subitem2"><a href="recipe/edit/edit_recipe.php"><?php echo($editrecipe);?></a></li>
+                <li class="subitem3"><a href="recipe/delete/delete_recipe.php"><?php echo($deleterecipe);?></a></li>
+				<li class="subitem3"><a href="recipe/delete/list_recipe.php"><?php echo($listrecipe);?></a></li>
+				<li class="subitem3"><a href="recipe/delete/search_recipe.php"><?php echo($searchrecipe);?></a></li>
 			</ul>
 		</li>
-        <li class="item2"><a href="#"><?php echo($ingredients);?><span>3</span></a>
+        <li class="item2"><a href="#"><?php echo($ingredients);?><span>5</span></a>
 			<ul>
-				<li class="subitem1"><a href="ingredients/add/add_ingredient.php"><?php echo($ingfirst);?></a></li>
-                <li class="subitem2"><a href="ingredients/edit/edit_ingredient.php"><?php echo($ingsecond);?></a></li>
-                <li class="subitem3"><a href="ingredients/delete/delete_ingredient.php"><?php echo($ingthird);?></a></li>
+				<li class="subitem1"><a href="ingredients/add/add_ingredient.php"><?php echo($addingredient);?></a></li>
+                <li class="subitem2"><a href="ingredients/edit/edit_ingredient.php"><?php echo($editingredient);?></a></li>
+                <li class="subitem3"><a href="ingredients/delete/delete_ingredient.php"><?php echo($deleteingredient);?></a></li>
+				<li class="subitem3"><a href="ingredients/delete/list_ingredient.php"><?php echo($listingredient);?></a></li>
+				<li class="subitem3"><a href="ingredients/delete/search_ingredient.php"><?php echo($searchingredient);?></a></li>
 			</ul>
 		</li>
         

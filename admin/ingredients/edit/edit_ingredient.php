@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 include ('../../../config/isadmin.php');
 
 if($isadmin){
@@ -34,7 +34,8 @@ function print_page(){
 			<option value="liquid"> <?php echo($liquid)?></option>
 			<option value="spicy"> <?php echo($spicy)?></option>
 			<option value="other"> <?php echo($other)?></option>
-		</select>	</p>
+		</select>
+	</p>
 	<input type="submit" value="<?php echo($addingredient);?>" />
 </form>
 
