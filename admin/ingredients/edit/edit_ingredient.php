@@ -13,14 +13,14 @@ function print_page(){
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-	<title> <?php echo($titleadd);?></title>
+	<title> <?php echo($titleedit);?></title>
 	<link rel="stylesheet" type="text/css" href="../../../css/admin/framemanagerecipe.css">
 
 </head>
 <body>
 
 
-<h2> <?php echo($titleadd);?> </h2>
+<h2> <?php echo($titleedit);?> </h2>
 <div id="formContainer">
 <form method="post" action="write_ingredient.php" id="menu">
     <p>
@@ -36,7 +36,7 @@ function print_page(){
 			<option value="other"> <?php echo($other)?></option>
 		</select>
 	</p>
-	<input type="submit" value="<?php echo($addingredient);?>" />
+	<input type="submit" value="<?php echo($editingredient);?>" />
 </form>
 
 	<a href="../../manageRecipe.php"> <?php echo($home);?> </a>

@@ -24,6 +24,10 @@
  
  
  ////////////////// Edit an ingredient ///////////////////
- 
+ $titleedit="Edit an ingredient";
+ $editingredient="Edit ingredient";
+ $errorIngredientNotExists="The ingredient does not exist";
+ $addit="Add it"; 
+ $goback="Previous page";
  
  ?>
