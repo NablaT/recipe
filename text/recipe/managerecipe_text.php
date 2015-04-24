@@ -56,7 +56,7 @@
  
  //Delete recipe: verification
  $successdelete="has been deleted";
- 
+ $faildelete="hasn't been deleted";
  
  
  ?>

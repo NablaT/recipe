@@ -28,7 +28,11 @@ function print_page(){
 		<?php
 	}
 	else{
-		
+		?>
+		<h2> <?php echo($errorrecipe1." ".$_GET['name']." ".$faildelete);?></h2>
+		<a href="delete_recipe.php"><?php echo($previouspage);?></a>
+		<a href="../../manageRecipe.php"><?php echo($home);?></a>
+		<?php
 	}
 }
 
