@@ -22,37 +22,5 @@ $req->execute(array(
 ));
 $req->closeCursor();
 */
-$req=$bdd->prepare('SELECT * FROM ingredient WHERE Name=?');
-$req->execute(array("test"));
-$reponse=$req->fetch();
-print_r($reponse);
-$req->closeCursor();
-/*
-$req=$bdd->query('SELECT * FROM test WHERE Name=\' Kiwi\'');
-$reponse=$req->fetch();
-print_r($reponse);
-$req->closeCursor();
-/*
-$string="Kiwii";
-$id=getId($bdd,1,$string);
-echo($id);
 
-function getId($bdd, $cpt, $str){
-	$id=substr($str,0,3).$cpt;
-	//echo("id: ".$id." ");
-	$req=$bdd->prepare('SELECT COUNT(*) FROM ingredient WHERE Idingredient=?');
-	$req->execute(array($id));
-	$reponse=$req->fetch();
-	$req->closeCursor();
-	print_r($reponse);
-	
-	if($reponse[0]==0){
-		return $id;
-	}
-	else{
-		$cpt=$cpt+1;
-		return getId($bdd,$cpt,$str);
-	}
-	
-}*/
 ?>

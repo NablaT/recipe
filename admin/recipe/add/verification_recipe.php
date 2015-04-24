@@ -1,12 +1,4 @@
-<!DOCTYPE>
-<html lang="en">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-	<title>Ajout d'une formulation</title>
-	<link rel="stylesheet" type="text/css" href="../../../css/admin/framemanagerecipe.css">
 
-</head>
-<body>
 
 <?php 
 session_cache_limiter('private_no_expire, must-revalidate');
@@ -17,9 +9,20 @@ if($isadmin){
 }
 
 function print_page(){
-		print_r($_POST);
 		include('../../../config/config.php');
 		include('../../../text/recipe/managerecipe_text.php');
+		?>
+		<!DOCTYPE>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
+	<title><?php echo($titleadd);?></title>
+	<link rel="stylesheet" type="text/css" href="../../../css/admin/framemanagerecipe.css">
+
+</head>
+<body>
+		
+		<?php
 		$saveingredients=array();
 		$savequantity=array();
 		$savetype=array();
@@ -34,7 +37,6 @@ function print_page(){
 			array_push($savesteps,$_POST['steps'.$i]);
 		}
 		
-		print_r($saveingredients);
 		if(!goodData($savequantity,$savetype)){
 			?>
 			<h2> <?php echo($errorquantity);?><br/> <?php echo($fillthemagain);?></h2>
@@ -43,7 +45,7 @@ function print_page(){
 		$badingredients=goodIngredients($saveingredients, $bdd);
 		?> <br/>
 		<?php
-		if(count($badingredients)>0){
+		/*if(count($badingredients)>0){
 				?> <h2> <?php echo($ingredients);?>:</h2> <?php
 				for($i=0;$i<count($badingredients);$i++){
 					?>
@@ -58,16 +60,16 @@ function print_page(){
 		}
 				
 		
-		else{
+		else{*/
 			saveall($saveingredients, $savequantity,$savetype,$savesteps,$bdd);
 			
 			?>
-			<h2> <?php echo($recipe);?>: <?php echo($_GET['name'])?>
-			<br/></h2>
-			<a href="add_recipe.php"> <?php echo($first)?></a><br/>
+			<h2> <?php echo($recipe);?> <?php echo($_GET['name'])?>
+			<?php echo($confirmation);?><br/></h2>
+			<a href="add_recipe.php"> <?php echo($addrecipe)?></a><br/>
 			<a href="../../manageRecipe.php"> <?php echo($menu)?></a>
 			<?php
-		}
+		/*}*/
 }
 		function goodIngredients($saveingredients,$bdd){
 			$savebadingredients=array();
@@ -93,102 +95,46 @@ function print_page(){
 			return true;
 		}
 		
-		function save_and_densite($saveingredients,$savequantity,$savetype,$bdd){
-			$req=$bdd->prepare('SELECT COUNT(*) FROM tmpformu WHERE RefVrac=?');
-			$req->execute(array($_GET['refvrac']));
+		function getID($bdd,$cpt){
+			$id=substr($_GET['name'],0,3).$cpt;
+			$req=$bdd->prepare('SELECT COUNT(*) FROM recipe WHERE Idrecipe=?');
+			$req->execute(array($id));
 			$reponse=$req->fetch();
 			$req->closeCursor();
 			if($reponse[0]==0){
-				for($i=0; $i<count($saveingredients);$i++){
-					$req = $bdd->prepare('INSERT INTO tmpformu(RefVrac, Matiere, Pourcentage, Type, Id) VALUES(:refvrac, :matiere, :pourcentage, :type, :id)');
-					$req->execute(array(
-					'refvrac' => $_GET['refvrac'],
-					'matiere' => $saveingredients[$i],
-					'pourcentage' => $savequantity[$i],
-					'type' => $savetype[$i],
-					'id' => $_GET['refvrac'].''.$i
-					));
-					$req->closeCursor();
-				}
+				return $id;
 			}
 			else{
-				$reponse=$bdd->prepare('DELETE FROM tmpformu WHERE RefVrac = ?');
-				$reponse->execute(array($_GET['refvrac']));
-				$reponse->closeCursor();
-				for($i=0; $i<count($saveingredients);$i++){
-					$req = $bdd->prepare('INSERT INTO tmpformu(RefVrac, Matiere, Pourcentage, Type, Id) VALUES(:refvrac, :matiere, :pourcentage, :type, :id)');
-					$req->execute(array(
-					'refvrac' => $_GET['refvrac'],
-					'matiere' => $saveingredients[$i],
-					'pourcentage' => $savequantity[$i],
-					'type' => $savetype[$i],
-					'id' => $_GET['refvrac'].''.$i
-					));
-					$req->closeCursor();
-				}
+				$cpt=$cpt+1;
+				return getId($bdd,$cpt);
 			}
-			$densite=0.0;
-			$savedensite=array();
-			for($i=0;$i<count($saveingredients);$i++){
-				if(strcmp($savetype[$i],"additifs")==0){
-					array_push($savedensite,0);
-				}
-				else{
-					$reponse=$bdd->prepare('SELECT * FROM matierepremiere WHERE Nom=?');
-					$reponse->execute(array($saveingredients[$i]));
-					$donnes=$reponse->fetch();
-					array_push($savedensite,$donnes['Densite']);
-				}
-			}
-			for($i=0;$i<count($saveingredients);$i++){
-				if(strcmp($savetype[$i],"additifs")==0){
-					$densite=$densite+$savequantity[$i];
-				}
-				else{
-					$densite=$densite+$savedensite[$i]*$savequantity[$i]/100;
-				}
-			}
-			return $densite;
 		}
 		
-			function saveAll($bdd){
-		$req=$bdd->prepare('SELECT COUNT(*) FROM corpsrecette WHERE RefVrac=?');
-		$req->execute(array($_GET['refvrac']));
-		$reponse=$req->fetch();
-		$req->closeCursor();
-		if($reponse[0]!=0){
-			$reponse=$bdd->prepare('DELETE FROM corpsrecette WHERE RefVrac = ?');
-			$reponse->execute(array($_GET['refvrac']));
-			$reponse->closeCursor();
-		}
-		$reponse=$bdd->prepare('SELECT * FROM tmpformu WHERE RefVrac=?');
-		$reponse->execute(array($_GET['refvrac']));
-		$savematiere=array();
-		$savepourcentage=array();
-		$savetypematiere=array();
-		while($donnes=$reponse->fetch()){
-			array_push($savematiere,$donnes['Matiere']);
-			array_push($savepourcentage,$donnes['Pourcentage']);
-			array_push($savetypematiere,$donnes['Type']);
-		}
-		$reponse->closeCursor();
-		for($i=0; $i<count($savematiere);$i++){
-			$req = $bdd->prepare('INSERT INTO corpsrecette(RefVrac, Matiere, Pourcentage, Type,Densitevrac,Idref,Typeref) VALUES(:refvrac, :matiere, :pourcentage, :type,:densitevrac,:idref,:typeref)');
-			$req->execute(array(
-			'refvrac' => $_GET['refvrac'],
-			'matiere' => $savematiere[$i],
-			'pourcentage' => $savepourcentage[$i],
-			'type' => $savetypematiere[$i],
-			'densitevrac'=>$_GET['densite'],
-			'idref'=>$_GET['refvrac'],
-			'typeref'=>"ofi"
-			));
-			$req->closeCursor();
-		}
-		
-		$req=$bdd->prepare('DELETE FROM tmpformu WHERE RefVrac = ?');
-		$req->execute(array($_GET['refvrac']));
-		$req->closeCursor();
+		function saveAll($saveingredients, $savequantity,$savetype,$savesteps,$bdd){
+			
+			$id=getID($bdd,1);
+			
+			for($i=0; $i<count($saveingredients);$i++){
+				$req = $bdd->prepare('INSERT INTO recipe(Name, Idingredient, Quantity,Idrecipe, Measure) VALUES(:name, :idingredient, :quantity, :idrecipe,:measure)');
+				$req->execute(array(
+				'name' => $_GET['name'],
+				'idingredient' => $saveingredients[$i],
+				'quantity' => $savequantity[$i],
+				'idrecipe' => $id,
+				'measure'=>$savetype[$i]
+				));
+				$req->closeCursor();
+			}
+			for($i=0; $i<count($savesteps);$i++){
+				$req = $bdd->prepare('INSERT INTO recipestep(Idrecipe, Name, Step) VALUES(:idrecipe,:name, :step)');
+				$req->execute(array(
+				'idrecipe' => $id,
+				'name' => $_GET['name'],
+				'step' => $savesteps[$i]
+				));
+				$req->closeCursor();
+			}
+			
 	
 	}
 

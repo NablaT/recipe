@@ -54,15 +54,15 @@ function print_page(){
 		// $reponse=$req->fetch();
 		// return ($reponse[0]!=0);
 		$id=getId($bdd,1, $_POST['name']);
-		$req=$bdd->prepare('SELECT * FROM ingredient WHERE Name=?');
+		$req=$bdd->prepare('SELECT COUNT(*) FROM ingredient WHERE Name=?');
 		$req->execute(array($_POST['name']));
 		$reponse=$req->fetch();
-		print_r($reponse);
-		return 0;
+		return ($reponse[0]==1);
 	}
 	
 	function updateIngredient($bdd){
 		$id=getId($bdd,1, $_POST['name']);
+		print_r($_POST);
 		$req = $bdd->prepare('UPDATE ingredient SET Name=:name AND Description=:description WHERE Idingredient=:idingredient');
 		$req->execute(array(
 			'name' => $_POST['name'],

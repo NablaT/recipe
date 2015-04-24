@@ -35,7 +35,7 @@ function print_page(){
 		<h3> <?php echo($errorRecipeExist);?><br/>
 		</h3>
 		<a href="add_recipe.php"> <?php echo($previouspage);?> </a>
-		<a href="../manageRecipe.php"> <?php echo($menu);?></a>
+		<a href="../../manageRecipe.php"> <?php echo($menu);?></a>
 		<?php
 	}
 	else{
