@@ -48,7 +48,15 @@
  $previouspage="Previous page";
  $menu="Menu";
  
- //Ingredients
+ //Delete recipe
+ $recipename="Recipe name";
+ $delete="Delete";
+ $errorrecipe1="The recipe";
+ $errorrecipe2="does not exist";
+ 
+ //Delete recipe: verification
+ $successdelete="has been deleted";
+ 
  
  
  ?>

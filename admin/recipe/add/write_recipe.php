@@ -62,9 +62,9 @@ function print_page(){
 					<td class="quantity"><input type="text" name="<?php echo($quantity)?>" id="<?php echo($pourcentage)?>" /></td>
 					<td class="typematiere">
 					<select name="<?php echo($type)?>" id="<?php echo($type)?>">
-						<option value="matierepremiere"><?php echo($solid)?></option> 
-						<option value="additifs"> <?php echo($liquid)?></option>
-						<option value="additifs"> <?php echo($unity)?></option>
+						<option value="solid"><?php echo($solid)?></option> 
+						<option value="liquid"> <?php echo($liquid)?></option>
+						<option value="unity"> <?php echo($unity)?></option>
 					</select>
 				</tr>
 				<?php
