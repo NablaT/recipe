@@ -58,5 +58,6 @@
  $successdelete="has been deleted";
  $faildelete="hasn't been deleted";
  
- 
+ //Recipe list
+ $titlelist="Recipe list";
  ?>

@@ -1,5 +1,14 @@
 <?php
 include('config/config.php');
+
+$savedescription=array();
+array_push($savedescription,"test");
+array_push($savedescription,"test2");
+array_push($savedescription,"test4");
+
+$b=in_array("test",$savedescription);
+
+
 /*$savename=array();
 $savedescription=array();
 $saveid=array();

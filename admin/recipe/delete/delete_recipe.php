@@ -28,7 +28,7 @@ function print_page(){
 	<input type="submit" value="<?php echo($delete);?>" />
 </form>
 
-<a href="../manageRecipe.php">  <?php echo($home);?></a>
+<a href="../../manageRecipe.php">  <?php echo($home);?></a>
 <?php
 }
 ?>

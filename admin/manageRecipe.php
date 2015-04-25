@@ -29,8 +29,8 @@ function print_page(){
 				<li class="subitem1"><a href="recipe/add/add_recipe.php"><?php echo($addrecipe);?></a></li>
                 <li class="subitem2"><a href="recipe/edit/edit_recipe.php"><?php echo($editrecipe);?></a></li>
                 <li class="subitem3"><a href="recipe/delete/delete_recipe.php"><?php echo($deleterecipe);?></a></li>
-				<li class="subitem3"><a href="recipe/delete/list_recipe.php"><?php echo($listrecipe);?></a></li>
-				<li class="subitem3"><a href="recipe/delete/search_recipe.php"><?php echo($searchrecipe);?></a></li>
+				<li class="subitem3"><a href="recipe/list/recipe_list.php"><?php echo($listrecipe);?></a></li>
+				<li class="subitem3"><a href="recipe/search/search_recipe.php"><?php echo($searchrecipe);?></a></li>
 			</ul>
 		</li>
         <li class="item2"><a href="#"><?php echo($ingredients);?><span>5</span></a>
