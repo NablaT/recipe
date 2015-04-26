@@ -1,32 +1,34 @@
+
+
 <?php 
-include 'isadmin.php';
+include ('../../../config/isadmin.php');
 
 if($isadmin){
 	print_page();
 }
 
 function print_page(){
-	?><!DOCTYPE>
+	include('../../../text/recipe/managerecipe_text.php');
+?>
+<!DOCTYPE>
 <html lang="en">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-	<title>Mis à jour densité</title>
-	<link rel="stylesheet" type="text/css" href="analyse.css">
+	<title><?php echo($editrecipe);?></title>
+	<link rel="stylesheet" type="text/css" href="../../../css/admin/framemanagerecipe.css">
 
 </head>
-
-<?php 
-?>
 <body>
-<h2> Edition d'une formulation</h2>
-<form method="post" action="modify_formu.php">
+<h2> <?php echo($editrecipe);?></h2>
+<form method="post" action="write_recipe.php">
     <p>
-        <label>Nom de la formulation </label> : <br/><input type="text" name="nom" id="nom"/>
+        <label><?php echo($recipename);?></label> : <br/><input type="text" name="nom" id="nom"/>
 		<br/>
     </p>
-	<input type="submit" value="Continuer" />
+	<input type="submit" value="<?php echo($edit);?>" />
 </form>
-<a href="index.php"> Retour menu </a>
+
+<a href="../../manageRecipe.php">  <?php echo($home);?></a>
 <?php
 }
 ?>

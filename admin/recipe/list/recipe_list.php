@@ -87,9 +87,8 @@ function print_page(){
 }
 	
 	/*
-		This function look for the name of the recipe in database
-		and return true if the recipe already exists
-		@return boolean. 
+		This function returns ids and name for each recipe. 
+		@return array. 
 	*/
 	function getIdRecipe($bdd){
 		$id=array();

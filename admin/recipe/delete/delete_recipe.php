@@ -20,7 +20,7 @@ function print_page(){
 </head>
 <body>
 <h2> <?php echo($deleterecipe);?></h2>
-<form method="post" action="verify_delete.php">
+<form method="post" action="verify_edit.php">
     <p>
         <label><?php echo($recipename);?></label> : <br/><input type="text" name="nom" id="nom"/>
 		<br/>

@@ -60,4 +60,8 @@
  
  //Recipe list
  $titlelist="Recipe list";
+ 
+ //Edit recipe
+ $editrecipe="Edit a recipe";
+ $edit="Edit";
  ?>
