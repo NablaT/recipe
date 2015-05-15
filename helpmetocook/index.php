@@ -9,6 +9,7 @@
 <body>
 
 <?php
+include ('../config/isconnected.php');
 include('../text/menuhelpme_text.php');
 //To fix textarea: resize:none; 
 ?>
@@ -19,9 +20,9 @@ include('../text/menuhelpme_text.php');
 	<textarea name="textarea"> </textarea >
 	</br>
 	<?php echo($option);?></br>
-    <input type="radio" name="option" value="1error" id="1error" /> <label for="1error"> 1 </label>
-    <input type="radio" name="option" value="2error" id="2error" /> <label for="2error">2</label>
-    <input type="radio" name="option" value="3error" id="3error" /> <label for="3error">3</label>
+    <input type="radio" name="option" value="1" id="1" /> <label for="1error"> 1 </label>
+    <input type="radio" name="option" value="2" id="2" /> <label for="2error">2</label>
+    <input type="radio" name="option" value="3" id="3" /> <label for="3error">3</label>
     <input type="radio" name="option" value="more" id="more" /> <label for="more">More</label></br>
 	<input type="submit" name="find" value="Valider" />
    </p>

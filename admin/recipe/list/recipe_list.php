@@ -24,12 +24,12 @@ function print_page(){
 	$res=getIdRecipe($bdd);
 	$idrecipe=$res[0];
 	$names=$res[1];
-	print_r($idrecipe);
-	echo("Count :".count($idrecipe));
+	// print_r($idrecipe);
+	// echo("Count :".count($idrecipe));
 	for($i=0;$i<count($idrecipe);$i++){
-		echo("Je rentre ".$i);
+		//echo("Je rentre ".$i);
 		$savesteps=getSteps($bdd,$idrecipe[$i]);
-		print_r($savesteps);
+		//print_r($savesteps);
 		$infos=getInfoRecipe($bdd,$idrecipe[$i]);
 		$saveingredients=$infos[0];
 		$savequantity=$infos[1];
