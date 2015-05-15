@@ -80,7 +80,6 @@ function print_page(){
 	
 	}
 	?>
-	
 	<a href="confirm_delete.php?confirm=yes&name=<?php echo($_POST['nom']) ?>"><?php echo($deleterecipe)?></a>
 	<a href="delete_recipe.php"><?php echo($previouspage)?></a>
 	<?php

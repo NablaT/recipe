@@ -4,6 +4,7 @@ $fieldvalue="Example: eggs fish sugar";
 $description="Enter your ingredients"; 
 $option="Number of missing ingredients:";
 $button="Find";
+$validate="Validate"; 
 
 //List frame
 $errorRecipes="We can't find recipes according to your parameters"; 
