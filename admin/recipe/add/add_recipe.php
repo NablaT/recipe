@@ -33,7 +33,7 @@ function print_page(){
 	<input type="submit" value="<?php echo($next);?>" />
 </form>
 
-	<a href="../manageRecipe.php"> <?php echo($home);?> </a>
+	<a href="../../manageRecipe.php"> <?php echo($home);?> </a>
 </div>
 </script>
 <?php
