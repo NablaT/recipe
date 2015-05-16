@@ -61,6 +61,7 @@
 			</table>
 			<a href="#"><?php echo($validate);?></a>
 			<script src="../js/selection.js"></script>
+			<a href="index.php"><?php echo($previousPage);?></a>
 		<?php
 	}
  }

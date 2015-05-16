@@ -10,7 +10,7 @@ if($isadmin){
 
 function print_page(){
 	include('../../../config/config.php');
-	include('../../../text/recipe/managerecipe_text.php');7
+	include('../../../text/recipe/managerecipe_text.php');
 	?>
 	<!DOCTYPE>
 	<html lang="en">
@@ -35,7 +35,6 @@ function print_page(){
 		$savequantity=$infos[1];
 		$savemeasure=$infos[2];
 		?>
-		<h3> <?php echo($name);?>: <?php echo($names[$i]) ?><br/></h3>
 		<table id="pricetable">
 		<thead>
 			<tr>
@@ -77,14 +76,7 @@ function print_page(){
 		</tbody>
 		</table><p>
 		<?php
-	
 	}
-	?>
-	<a href="confirm_delete.php?confirm=yes&name=<?php echo($_POST['nom']) ?>"><?php echo($deleterecipe)?></a>
-	<a href="delete_recipe.php"><?php echo($previouspage)?></a>
-	<?php
-}
-	
 	/*
 		This function returns ids and name for each recipe. 
 		@return array. 
