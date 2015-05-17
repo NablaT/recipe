@@ -24,8 +24,6 @@ function print_page(){
 	$res=getIdRecipe($bdd);
 	$idrecipe=$res[0];
 	$names=$res[1];
-	// print_r($idrecipe);
-	// echo("Count :".count($idrecipe));
 	for($i=0;$i<count($idrecipe);$i++){
 		//echo("Je rentre ".$i);
 		$savesteps=getSteps($bdd,$idrecipe[$i]);
@@ -34,7 +32,18 @@ function print_page(){
 		$saveingredients=$infos[0];
 		$savequantity=$infos[1];
 		$savemeasure=$infos[2];
+		displayList($names[$i],$ingredient,$quantity,$type,$saveingredients,$savequantity,$savemeasure,$savesteps,$steps);
+		
+	
+	}
+	?>
+	<a href="../../managerecipe.php"><?php echo($previouspage)?></a>
+	<?php
+}
+	function displayList($names,$ingredient,$quantity,$type,$saveingredients,$savequantity,$savemeasure,$savesteps,$steps){
+		include('../../../text/recipe/managerecipe_text.php');
 		?>
+		<h3> <?php echo($name);?>: <?php echo($names) ?><br/></h3>
 		<table id="pricetable">
 		<thead>
 			<tr>
@@ -77,6 +86,7 @@ function print_page(){
 		</table><p>
 		<?php
 	}
+
 	/*
 		This function returns ids and name for each recipe. 
 		@return array. 
