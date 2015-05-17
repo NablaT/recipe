@@ -62,7 +62,7 @@ function print_page(){
 	
 	function updateIngredient($bdd){
 		$id=getId($bdd,1, $_POST['name']);
-		print_r($_POST);
+		//print_r($_POST);
 		$req = $bdd->prepare('UPDATE ingredient SET Name=:name AND Description=:description WHERE Idingredient=:idingredient');
 		$req->execute(array(
 			'name' => $_POST['name'],

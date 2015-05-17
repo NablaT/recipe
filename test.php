@@ -1,7 +1,40 @@
 <?php
 include('config/config.php');
-//369.4
-$xmlstr = '<?xml version="1.0" encoding="utf-8" ?'.'>'.
+
+$array=array();
+
+array_push($array, "Vegetable");
+array_push($array, "Starch");
+array_push($array, "Others");
+array_push($array, "Starch");
+array_push($array, "Beef");
+array_push($array, "Pork");
+$father=array(); 
+array_push($father, "Salad");
+array_push($father, "Salad");
+array_push($father, "Vegetable");
+array_push($father, "Vegetable");
+array_push($father, "Meat");
+array_push($father, "Meat");
+/*array_push($array, "Beef");
+array_push($array, "Pork");
+/*array_push($array, "Fruits");
+array_push($array, "Chocolate");
+$reponse=$bdd->query('DELETE FROM category');
+$reponse->closeCursor(); */
+$step=3;
+for($i=0;$i<count($array);$i++){
+	$req = $bdd->prepare('INSERT INTO category(Name, Step,Father) VALUES(:name, :step,:father)');
+	$req->execute(array(
+		'name' => $array[$i],
+		'step' => $step, 
+		'father'=>$father[$i]
+	));
+	$req->closeCursor();
+}
+
+
+/*$xmlstr = '<?xml version="1.0" encoding="utf-8" ?'.'>'.
 '<ingredients>
     <ingredients>
          <id name="Ban1">

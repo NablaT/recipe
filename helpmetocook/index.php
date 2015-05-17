@@ -24,7 +24,7 @@ include('../text/menuhelpme_text.php');
     <input type="radio" name="option" value="2" id="2" /> <label for="2error">2</label>
     <input type="radio" name="option" value="3" id="3" /> <label for="3error">3</label>
     <input type="radio" name="option" value="more" id="more" /> <label for="more">More</label></br>
-	<input type="submit" name="find" value="Valider" />
+	<input type="submit" name="find" value="<?php echo($validate);?>" />
    </p>
 </form>
 </p>
