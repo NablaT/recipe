@@ -12,18 +12,18 @@ function print_page($bdd){
 	$step=0;
 	if(count($_GET)!=0){
 		$step=$_GET['step']+1;
-		print_r($_POST);
 		savepreviousresults($bdd);
 	}
 	$choices=getNewChoice($bdd);
 	
 	if(count($choices)==0){
 		$codeRecipe=getCodeRecipe($bdd);
+		cleanCurrentChoices($bdd);
 		?>
 		<html>
 			<head>
 			<title>Redirection</title>
-				<meta http-equiv="refresh" content="0.00001; URL=./planningprod.php">
+				<meta http-equiv="refresh" content="0.00001; URL=recipelist.php?code=<?php echo($codeRecipe);?>">
 			</head>
 			<body>
 		</body>
@@ -61,13 +61,27 @@ function print_page($bdd){
 }
 
 /**
+* Function currentChoices clean the table currentchoices in the database. 
+**/
+function cleanCurrentChoices($bdd){
+	$reponse=$bdd->query('DELETE FROM currentchoices');
+	$reponse->closeCursor(); 
+}
+/**
 * The function returns the code corresponding to all choices made by user.
 **/
 function getCodeRecipe($bdd){
-	//$step=$_GET['step'];
-	
-	
+	$req = $bdd->query('SELECT * FROM currentchoices');
+	$code="";
+	$i=0;
+	while($donnes=$req->fetch()){
+		if($i==0) $code=$donnes['Name'];
+		else $code=$code."-".$donnes['Name'];
+		$i++;
+	}
+	return $code;
 }
+
 /**
 * This function returns two new choices for users. 
 **/

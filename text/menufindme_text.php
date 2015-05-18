@@ -5,4 +5,6 @@ $previousPage="Previous Page";
 $recipeList="Recipe list"; 
 
 $or="OR";
+
+//
 ?>
