@@ -3,28 +3,37 @@ include('config/config.php');
 
 $array=array();
 
-array_push($array, "Vegetable");
-array_push($array, "Starch");
-array_push($array, "Others");
-array_push($array, "Starch");
-array_push($array, "Beef");
-array_push($array, "Pork");
+array_push($array, "Sugary");
+array_push($array, "Salety");
+// array_push($array, "Salad");
+// array_push($array, "Other");
+// array_push($array, "Vegetable");
+// array_push($array, "Meat");
 $father=array(); 
-array_push($father, "Salad");
-array_push($father, "Salad");
-array_push($father, "Vegetable");
-array_push($father, "Vegetable");
-array_push($father, "Meat");
-array_push($father, "Meat");
+array_push($father, "Other");
+array_push($father, "Other");
+array_push($father, "Entry");
+array_push($father, "Entry");
+array_push($father, "Plate");
+array_push($father, "Plate");
+$reponse=$bdd->query('DELETE FROM currentchoices');
+$reponse->closeCursor(); 
+
 /*array_push($array, "Beef");
 array_push($array, "Pork");
 /*array_push($array, "Fruits");
 array_push($array, "Chocolate");
 $reponse=$bdd->query('DELETE FROM category');
-$reponse->closeCursor(); */
-$step=3;
+$reponse->closeCursor(); 
+$step=0;
 for($i=0;$i<count($array);$i++){
-	$req = $bdd->prepare('INSERT INTO category(Name, Step,Father) VALUES(:name, :step,:father)');
+	$req = $bdd->prepare('UPDATE category SET Step=:step WHERE Name=:name ');
+		$req->execute(array(
+			'step' => $step,
+			'name' => $array[$i]
+		));
+		$req->closeCursor();
+	/*$req = $bdd->prepare('INSERT INTO category(Name, Step,Father) VALUES(:name, :step,:father)');
 	$req->execute(array(
 		'name' => $array[$i],
 		'step' => $step, 
