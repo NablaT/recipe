@@ -16,7 +16,35 @@ array_push($father, "Entry");
 array_push($father, "Entry");
 array_push($father, "Plate");
 array_push($father, "Plate");
-$reponse=$bdd->query('DELETE FROM currentchoices');
+
+$id=array();
+$name=array();
+$steps=array();
+$req = $bdd->query('SELECT * FROM category');
+while($donnes=$req->fetch()){
+	$step=$donnes['Step'];
+	$currId=substr($donnes['Name'],0,3)."".$donnes['Step'];
+	while(in_array($currId,$id)){
+		$step++;
+		$currId=substr($donnes['Name'],0,3)."".$step;
+	}
+	array_push($id,$currId);
+	array_push($name,$donnes['Name']);
+	array_push($steps,$donnes['Step']);
+}
+$req->closeCursor();
+
+for($i=0;$i<count($id);$i++){
+	$req = $bdd->prepare('UPDATE category SET Id=:id WHERE Step=:step  AND Name=:name ');
+	$req->execute(array(
+		'id' => $id[$i],
+		'step' => $steps[$i],
+		'name' => $name[$i]
+	));
+	$req->closeCursor();
+}
+
+/*$reponse=$bdd->query('DELETE FROM currentchoices');
 $reponse->closeCursor(); 
 
 /*array_push($array, "Beef");
