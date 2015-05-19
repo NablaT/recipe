@@ -6,6 +6,7 @@ if($isadmin){
 }
 
 function print_page(){
+	include ('../../../config/config.php');
 	include('../../../text/recipe/managerecipe_text.php');
 ?>
 
@@ -29,7 +30,28 @@ function print_page(){
         <label><?php echo($nbofingredients);?> </label> : <br/><input type="number" name="number" id="number"/>
 		<br/><br/>
         <label><?php echo($nbofsteps);?> </label> : <br/><input type="number" name="steps" id="steps" />
-	</p>
+		<br/><br/>
+		<?php 	
+		$categories=array();
+		$req = $bdd->query('SELECT * FROM category');
+		while($donnes=$req->fetch()){
+			if(strcmp($donnes['Name'],"Other")!=0 
+				&& strcmp($donnes['Name'],"Others")!=0 ){
+					array_push($categories, $donnes['Name']);		
+			}
+		}
+		$req->closeCursor();
+		?>
+		<label><?php echo($category);?> </label> : <br/>
+        <select name="godet">
+			<?php 
+			for($i=0;$i<count($categories);$i++){
+			?>
+				<option value="categories<?php echo($i);?>"><?php echo($categories[$i]);?></option>
+			<?php
+			}
+			?>
+		</select></p>
 	<input type="submit" value="<?php echo($next);?>" />
 </form>
 

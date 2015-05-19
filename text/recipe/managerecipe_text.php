@@ -22,6 +22,7 @@
  $name="Name";
  $nbofingredients="Number of ingredients";
  $nbofsteps="Number of steps";
+ $category="Category";
  
  //Write recipe
  $ingredient="Ingredient";
