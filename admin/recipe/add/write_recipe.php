@@ -38,9 +38,11 @@ function print_page(){
 		<a href="../../manageRecipe.php"> <?php echo($menu);?></a>
 		<?php
 	}
+	
 	else{
+		//print_r($_POST);
 		?> <h3> <?php echo($name);?>: <?php echo($_POST['nom']) ?><br/></h3>
-		<form method="post" action="verification_recipe.php?name=<?php echo($_POST['nom'])?>" onsubmit="return verifier(this);">
+		<form method="post" action="verification_recipe.php?name=<?php echo($_POST['nom'])?>&code=<?php echo($_POST['code'])?>" onsubmit="return verifier(this);">
 		<table id="pricetable">
 			<thead>
 				<tr>

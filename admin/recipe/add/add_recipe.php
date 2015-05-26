@@ -35,19 +35,20 @@ function print_page(){
 		$categories=array();
 		$req = $bdd->query('SELECT * FROM category');
 		while($donnes=$req->fetch()){
-			if(strcmp($donnes['Name'],"Other")!=0 
-				&& strcmp($donnes['Name'],"Others")!=0 ){
+			/*if(strcmp($donnes['Name'],"Other")!=0 
+				&& strcmp($donnes['Name'],"Others")!=0 ){*/
+				if(strcmp($donnes['Id'],"")==0){
 					array_push($categories, $donnes['Name']);		
 			}
 		}
 		$req->closeCursor();
 		?>
 		<label><?php echo($category);?> </label> : <br/>
-        <select name="godet">
+        <select name="code">
 			<?php 
 			for($i=0;$i<count($categories);$i++){
 			?>
-				<option value="categories<?php echo($i);?>"><?php echo($categories[$i]);?></option>
+				<option value="<?php echo($categories[$i]);?>"><?php echo($categories[$i]);?></option>
 			<?php
 			}
 			?>

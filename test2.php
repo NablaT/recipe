@@ -7,7 +7,26 @@ array_push($savedescription,"test2");
 array_push($savedescription,"test4");
 
 $b=in_array("test",$savedescription);
+$categories=array();
+array_push($categories,"Salety-Plate-Meat-Pork");
+array_push($categories,"Salety-Plate-Meat-Beef");
+array_push($categories,"Salety-Plate-Vegetable");
+array_push($categories,"Salety-Entry-Other");
+array_push($categories,"Salety-Entry-Salad-Starch");
+array_push($categories,"Salety-Entry-Salad-Vegetable");+
+array_push($categories,"Sugary-Fruits");
+array_push($categories,"Sugary-Other-Others");
+array_push($categories,"Sugary-Other-Chocolate");
+/*$reponse=$bdd->query('DELETE FROM category');
+$reponse->closeCursor();*/
 
+for($i=0;$i<count($categories);$i++){
+	$req = $bdd->prepare('INSERT INTO category(Name) VALUES(:name)');
+	$req->execute(array(
+		'name' => $categories[$i]
+	));
+	$req->closeCursor();
+}
 
 /*$savename=array();
 $savedescription=array();

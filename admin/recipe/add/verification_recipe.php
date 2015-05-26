@@ -98,13 +98,14 @@ function print_page(){
 			$id=getID($bdd,1);
 			
 			for($i=0; $i<count($saveingredients);$i++){
-				$req = $bdd->prepare('INSERT INTO recipe(Name, Idingredient, Quantity,Idrecipe, Measure) VALUES(:name, :idingredient, :quantity, :idrecipe,:measure)');
+				$req = $bdd->prepare('INSERT INTO recipe(Name, Idingredient, Quantity,Idrecipe, Measure,Category) VALUES(:name, :idingredient, :quantity, :idrecipe,:measure,:category)');
 				$req->execute(array(
 				'name' => $_GET['name'],
 				'idingredient' => $saveingredients[$i],
 				'quantity' => $savequantity[$i],
 				'idrecipe' => $id,
-				'measure'=>$savetype[$i]
+				'measure'=>$savetype[$i],
+				'category'=>$_GET['code']
 				));
 				$req->closeCursor();
 			}
