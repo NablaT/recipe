@@ -104,20 +104,16 @@
  }
  
 /**
-*
-**/
-/**
 * Function lookForRecipes returns the recipe list according to ingredients 
 * given by users and the number of missing ingredients.
 **/
 function lookForRecipes($bdd, $codeRecipe){
-	$input=explode("-",$codeRecipe);
 	$recipes=array();
 	$count=array();
 	print_r($input);
 	for($i=0;$i<count($ingredients);$i++){
-	$req=$bdd->prepare('SELECT * FROM recipe WHERE Idingredient=?');
-	$req->execute(array($ingredients[$i]));
+	$req=$bdd->prepare('SELECT * FROM recipe WHERE Category=?');
+	$req->execute(array($input));
 		while($donnes =$req->fetch()){
 			if(in_array($donnes['Idrecipe'],$recipes)){
 				$position=$array_search($donnes['Idrecipe'],$recipes);
