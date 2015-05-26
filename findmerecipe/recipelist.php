@@ -16,6 +16,7 @@
 	<body>
 	<?php
 	$recipe=lookForRecipes($bdd, $_GET['code']);
+	print_r($_GET);
 	if(count($recipe)==0){
 	?>
 		<h2> <?php echo($errorRecipes);?><br/>

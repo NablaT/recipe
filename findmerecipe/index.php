@@ -14,6 +14,9 @@ function print_page($bdd){
 		$step=$_GET['step']+1;
 		savepreviousresults($bdd);
 	}
+	else{
+		cleanCurrentChoices($bdd);
+	}
 	$choices=getNewChoice($bdd);
 	
 	if(count($choices)==0){
@@ -31,6 +34,11 @@ function print_page($bdd){
 		<?php
 	}
 	else{
+		$code="";
+		if(count($_GET)!=0){
+			$code=getCodeRecipe($bdd);
+		}
+		
 		?>
 		<html lang="en">
 			<head>
@@ -53,8 +61,9 @@ function print_page($bdd){
 			<input type="submit" name="validate" value="<?php echo($validate);?>" />
 		</form>
 		</div>
-
-			<a href="../menu.php"><?php echo($previousPage);?></a>
+		<br/>
+			<a class="recipelist" id="recipelist" href="recipelist.php?code=<?php echo($code);?>"><?php echo($recipeList);?></a><br/>
+			<a class="previouspage" id="previouspage" href="../menu.php"><?php echo($previousPage);?></a>
 		</body>
 		<?php
 	}
@@ -147,4 +156,5 @@ function savepreviousresults($bdd){
 	));
 	$req->closeCursor();
 }
+
 ?>

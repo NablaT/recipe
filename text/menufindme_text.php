@@ -2,7 +2,7 @@
 $title="Find me a recipe";
 $validate="Validate"; 
 $previousPage="Previous Page";
-$recipeList="Recipe list"; 
+$recipeList="Recipe List"; 
 
 $or="OR";
 

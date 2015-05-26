@@ -45,22 +45,6 @@ function print_page(){
 		$badingredients=goodIngredients($saveingredients, $bdd);
 		?> <br/>
 		<?php
-		/*if(count($badingredients)>0){
-				?> <h2> <?php echo($ingredients);?>:</h2> <?php
-				for($i=0;$i<count($badingredients);$i++){
-					?>
-					<h2> <br/><?php echo($badingredients[$i])?> </h2>
-					<?php
-				}	
-				
-			?>
-			<h3> <br/><?php echo($erroringredient);?><br/>
-			<?php echo($fillthemagain);?></h3>
-			<?php
-		}
-				
-		
-		else{*/
 			saveall($saveingredients, $savequantity,$savetype,$savesteps,$bdd);
 			
 			?>
@@ -69,7 +53,6 @@ function print_page(){
 			<a href="add_recipe.php"> <?php echo($addrecipe)?></a><br/>
 			<a href="../../manageRecipe.php"> <?php echo($menu)?></a>
 			<?php
-		/*}*/
 }
 		function goodIngredients($saveingredients,$bdd){
 			$savebadingredients=array();
