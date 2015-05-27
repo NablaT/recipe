@@ -5,4 +5,7 @@ $previousPage="Previous Page";
 $recipeList="Recipe List"; 
 
 $or="OR";
+$name="Recipe";
+$ingredients="Ingredients";
+$nbSteps="Number of steps";
 ?>

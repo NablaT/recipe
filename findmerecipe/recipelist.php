@@ -26,18 +26,19 @@
 	<?php	 
 	}
 	else{
-		$missingIngredient=array();
+		$ingredientList=array();
 		$stringMissingIngredient=array();
 		for($i=0;$i<count($recipe);$i++){
-			array_push($missingIngredient,getMissingIngredients($bdd, $recipe[$i],$ingredients));
-			array_push($stringMissingIngredient,buildStringMissingIngredients($missingIngredient,$i));
+			array_push($ingredientList,getIngredients($bdd, $recipe[$i]));
+			print_r($ingredientList);
+			array_push($stringMissingIngredient,buildStringIngredients($ingredientList,$i));
 		}
 		?>
 		<table id="table">
 		<thead>
 			<tr>
 				<th class="choiceA"><?php echo($name);?>  </th>
-				<th class="choiceC on"><?php echo($missingIngredients);?> </th>
+				<th class="choiceC on"><?php echo($ingredients);?> </th>
 				<th class="choiceD"><?php echo($nbSteps)?></th>
 			</tr>
 		</thead>
@@ -75,6 +76,15 @@
 	return $donnes[0];
  }
  
+ function getIngredients($bdd, $recipe){
+	$ingredients=array();
+	$req=$bdd->prepare('SELECT * FROM recipe WHERE Idrecipe=?');
+	$req->execute(array($recipe));
+	while($donnes=$req->fetch()){
+		array_push($ingredients, $donnes['Idingredient']);
+	}
+	return $ingredients;
+ }
  /**
  * Function getNameRecipe returns the name of a recipe thanks to recipe id in parameter.
  **/
@@ -102,6 +112,17 @@
 	}
 	return $ingredientlist; 
  }
+ /**
+ * Function BuildStringIngredients returns the string with ingredients which will be 
+ * displayed to users. 
+ **/
+ function buildStringIngredients($missingIngredients,$pos){
+	 $result="";
+	 for($i=0; $i<count($missingIngredients);$i++){
+		 $result=$result."<br/>".$missingIngredients[$pos][$i];
+	 }
+	 return $result;
+ }
  
 /**
 * Function lookForRecipes returns the recipe list according to ingredients 
@@ -110,22 +131,23 @@
 function lookForRecipes($bdd, $codeRecipe){
 	$recipes=array();
 	$count=array();
-	print_r($input);
-	for($i=0;$i<count($ingredients);$i++){
+	$input=$_GET['code'];
+	echo($input);
 	$req=$bdd->prepare('SELECT * FROM recipe WHERE Category=?');
 	$req->execute(array($input));
-		while($donnes =$req->fetch()){
-			if(in_array($donnes['Idrecipe'],$recipes)){
-				$position=$array_search($donnes['Idrecipe'],$recipes);
-				$count[$position]=$count[$position]+1;
-			}
-			else{
-				array_push($recipes,$donnes['Idrecipe']);
-				array_push($count,1);
-			}
+	while($donnes =$req->fetch()){
+		if(in_array($donnes['Idrecipe'],$recipes)){
+			$position=$array_search($donnes['Idrecipe'],$recipes);
+			$count[$position]=$count[$position]+1;
+		}
+		else{
+			array_push($recipes,$donnes['Idrecipe']);
+			array_push($count,1);
 		}
 	}
-	$recipes=getRecipes($recipes, $count, $nbMissing,$bdd);
+
+	print_r($recipes);
+	//$recipes=getRecipes($recipes, $count, $nbMissing,$bdd);
 	return $recipes;
 }
 	/**
