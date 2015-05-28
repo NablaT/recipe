@@ -52,6 +52,7 @@ input[type=submit]{
   border: solid #00CC00 4px;
   font-size: 25px;
 }
+
 .recipelist{
  position: absolute;
   top: 77%;

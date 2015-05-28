@@ -16,8 +16,8 @@
 	<body>
 	<?php
 	$recipe=lookForRecipes($bdd, $_GET['code']);
-	print_r($_GET);
 	if(count($recipe)==0){
+		$recipe=LookForRecipesWrongCode($bdd,$_GET['code']);
 	?>
 		<h2> <?php echo($errorRecipes);?><br/>
 		</h2>
@@ -30,7 +30,6 @@
 		$stringMissingIngredient=array();
 		for($i=0;$i<count($recipe);$i++){
 			array_push($ingredientList,getIngredients($bdd, $recipe[$i]));
-			print_r($ingredientList);
 			array_push($stringMissingIngredient,buildStringIngredients($ingredientList,$i));
 		}
 		?>
@@ -125,6 +124,41 @@
  }
  
 /**
+* Each code as the same structure "category-category2-category3...Etc". 
+* Function buildcode returns the same code in parameter without the last category. 
+**/
+function buildCode($codeRecipe){
+	
+}
+
+/**
+* Function lookForRecipesWrongCode returns the recipe list according to previous 
+* users choices.
+**/
+function lookForRecipesWrongCode($bdd, $codeRecipe){
+	$recipes=array();
+	$saveCodes=array();
+	//First we select all categories which contains our code
+	$req=$bdd->query('SELECT * FROM category');
+	while($donnes =$req->fetch()){
+		if(strpos($donnes,$codeRecipe)==0){
+			array_push($saveCodes,$donnes['Name']);
+		}
+	}
+	$req->closeCursor();
+	//Then we save all recipes which have previous codes. 
+	for($i=0;$i<count($saveCodes);$i++){
+		$req=$bdd->prepare('SELECT * FROM recipe WHERE Code=?');
+		$req->execute(array($saveCodes[$i]));
+		while($donnes=$req->fetch()){
+			array_push($recipes, $donnes['Name']);
+		}
+		$req->closeCursor();
+	}
+	return $recipes;
+}
+ 
+/**
 * Function lookForRecipes returns the recipe list according to ingredients 
 * given by users and the number of missing ingredients.
 **/
@@ -132,12 +166,11 @@ function lookForRecipes($bdd, $codeRecipe){
 	$recipes=array();
 	$count=array();
 	$input=$_GET['code'];
-	echo($input);
 	$req=$bdd->prepare('SELECT * FROM recipe WHERE Category=?');
 	$req->execute(array($input));
 	while($donnes =$req->fetch()){
 		if(in_array($donnes['Idrecipe'],$recipes)){
-			$position=$array_search($donnes['Idrecipe'],$recipes);
+			$position=array_search($donnes['Idrecipe'],$recipes);
 			$count[$position]=$count[$position]+1;
 		}
 		else{
@@ -145,8 +178,6 @@ function lookForRecipes($bdd, $codeRecipe){
 			array_push($count,1);
 		}
 	}
-
-	print_r($recipes);
 	//$recipes=getRecipes($recipes, $count, $nbMissing,$bdd);
 	return $recipes;
 }
