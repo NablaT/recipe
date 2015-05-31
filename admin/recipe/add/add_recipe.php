@@ -35,11 +35,8 @@ function print_page(){
 		$categories=array();
 		$req = $bdd->query('SELECT * FROM category');
 		while($donnes=$req->fetch()){
-			/*if(strcmp($donnes['Name'],"Other")!=0 
-				&& strcmp($donnes['Name'],"Others")!=0 ){*/
-				if(strcmp($donnes['Id'],"")==0){
-					array_push($categories, $donnes['Name']);		
-			}
+			array_push($categories, $donnes['Name']);		
+			
 		}
 		$req->closeCursor();
 		?>

@@ -18,7 +18,8 @@ include('../text/menuhelpme_text.php');
 	<form method="post" action="recipelist.php">
 	<p>
 		<label for="description"> <?php echo($description);?> </label></br>
-		<textarea name="textarea"> </textarea >
+		
+		<input type="text" name="user">
 		</br>
 		<?php echo($option);?></br>
 		<input type="radio" name="radio" value="0" id="0" /> <label for="0error"> 0 </label>
