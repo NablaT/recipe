@@ -3,30 +3,32 @@ include('config/config.php');
 
 $array=array();
 
-array_push($array, "Salty");
-// array_push($array, "Starch");
-// array_push($array, "Other");
-// array_push($array, "Starch");
-// array_push($array, "Salad");
-// array_push($array, "Other");
-// array_push($array, "Vegetable");
-// array_push($array, "Meat");
-$father=array(); 
-array_push($father, "");
+// array_push($array, "Salty-Plate-Meat-Pork");
+array_push($array, "Salty-Plate-Meat-Beef");
+/*array_push($array, "Salty-Plate-Vegetable");
+array_push($array, "Salty-Entry-Other");
+array_push($array, "Salty-Entry-Salad-Starch");
+array_push($array, "Salty-Entry-Salad-Vegetable	");
+// $father=array(); 
+// array_push($father, "");
 /*array_push($father, "Entry");
 array_push($father, "Entry");
 array_push($father, "Plate");
 array_push($father, "Plate");*/
 $id=array();
-array_push($id, "Sal1");
-
+array_push($id, "Filet Mignon");
+// array_push($id, "Sal3");
+// array_push($id, "Sal4");
+// array_push($id, "Sal5");
+// array_push($id, "Sal6");
+// array_push($id, "Sal7");
 $step=1;
 
-for($i=0;$i<count($array);$i++){
-	$req = $bdd->prepare('UPDATE categorymenu SET Name=:name WHERE Id=:id ');
+// for($i=0;$i<6;$i++){
+	$req = $bdd->prepare('UPDATE recipe SET Category=:category WHERE Name=:name ');
 	    $req->execute(array(
-			'name' => $array[$i],
-			'id' => $id[$i]
+			'category' => $array[0],
+			'name' => $id[0]
 		));
 	$req->closeCursor();
 	/*$req = $bdd->prepare('INSERT INTO categorymenu(Name, Step,Father,Id) VALUES(:name, :step,:father,:id)');
@@ -37,7 +39,7 @@ for($i=0;$i<count($array);$i++){
 		'id'=>$id[$i]
 	));
 	$req->closeCursor();*/
-}
+// }
 
 
 /*

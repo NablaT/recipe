@@ -30,8 +30,9 @@
 		$stringMissingIngredient=array();
 		for($i=0;$i<count($recipe);$i++){
 			array_push($ingredientList,getIngredients($bdd, $recipe[$i]));
-			array_push($stringMissingIngredient,buildStringIngredients($ingredientList,$i));
+			array_push($stringMissingIngredient,buildStringIngredients($ingredientList[$i],$i));
 		}
+		
 		?>
 		<table id="table">
 		<thead>
@@ -119,7 +120,7 @@
  function buildStringIngredients($missingIngredients,$pos){
 	 $result="";
 	 for($i=0; $i<count($missingIngredients);$i++){
-		 $result=$result."<br/>".$missingIngredients[$pos][$i];
+		 $result=$result."<br/>".$missingIngredients[$i];
 	 }
 	 return $result;
  }

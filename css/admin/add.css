@@ -26,9 +26,11 @@ tr:hover {
 
 a {
 	display:table;
+	width:100px;
 	margin:20px auto;
 	padding:10px 40px;
 	text-decoration:none;
+	text-align:center;
 	color:#fff;background:#09f;
 }
 p{
