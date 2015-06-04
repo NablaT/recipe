@@ -62,6 +62,7 @@
 			<a href="#"><?php echo($validate);?></a>
 			<script src="../js/selection.js"></script>
 			<a href="index.php"><?php echo($previousPage);?></a>
+			<a href="../menu.php"> <?php echo($menu);?></a>
 		<?php
 	}
  }
@@ -141,7 +142,7 @@ function lookForRecipesWrongCode($bdd, $codeRecipe){
 	//First we select all categories which contains our code
 	$req=$bdd->query('SELECT * FROM category');
 	while($donnes =$req->fetch()){
-		if(strpos($donnes,$codeRecipe)==0){
+		if(strpos($donnes['Name'],$codeRecipe)==0){
 			array_push($saveCodes,$donnes['Name']);
 		}
 	}

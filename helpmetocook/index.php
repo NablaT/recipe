@@ -27,12 +27,13 @@ include('../text/menuhelpme_text.php');
 		<input type="radio" name="radio" value="2" id="2" /> <label for="2error">2</label>
 		<input type="radio" name="radio" value="3" id="3" /> <label for="3error">3</label>
 		<input type="radio" name="radio" value="more" id="more" /> <label for="more">More</label><br/><br/><br/><br/>
-		<input type="submit" name="find" class="login login-submit" value="<?php echo($validate);?>" />
+		<input type="submit" name="find" class="login login-submit" value="<?php echo($find);?>" />
 	   </p>
 	</form>
 	</p>
 	</form>
-</div>
-</body>
+	<a  href="../menu.php"><h3><br/> </h3><?php echo($previousPage);?></a>
+
+</div></body>
 
 </html>

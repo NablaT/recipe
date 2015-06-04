@@ -3,20 +3,44 @@ include('config/config.php');
 
 $array=array();
 
-array_push($array, "Sugary");
-array_push($array, "Salety");
+array_push($array, "Salty");
+// array_push($array, "Starch");
+// array_push($array, "Other");
+// array_push($array, "Starch");
 // array_push($array, "Salad");
 // array_push($array, "Other");
 // array_push($array, "Vegetable");
 // array_push($array, "Meat");
 $father=array(); 
-array_push($father, "Other");
-array_push($father, "Other");
-array_push($father, "Entry");
+array_push($father, "");
+/*array_push($father, "Entry");
 array_push($father, "Entry");
 array_push($father, "Plate");
-array_push($father, "Plate");
+array_push($father, "Plate");*/
+$id=array();
+array_push($id, "Sal1");
 
+$step=1;
+
+for($i=0;$i<count($array);$i++){
+	$req = $bdd->prepare('UPDATE categorymenu SET Name=:name WHERE Id=:id ');
+	    $req->execute(array(
+			'name' => $array[$i],
+			'id' => $id[$i]
+		));
+	$req->closeCursor();
+	/*$req = $bdd->prepare('INSERT INTO categorymenu(Name, Step,Father,Id) VALUES(:name, :step,:father,:id)');
+	$req->execute(array(
+		'name' => $array[$i],
+		'step' => $step, 
+		'father'=>$father[$i], 
+		'id'=>$id[$i]
+	));
+	$req->closeCursor();*/
+}
+
+
+/*
 $id=array();
 $name=array();
 $steps=array();

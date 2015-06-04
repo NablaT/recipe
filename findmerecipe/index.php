@@ -26,7 +26,7 @@ function print_page($bdd){
 		<html>
 			<head>
 			<title>Redirection</title>
-				<meta http-equiv="refresh" content="0.00001; URL=recipelist.php?code=<?php echo($codeRecipe);?>">
+				<meta http-equiv="refresh" content="0.00000005; URL=recipelist.php?code=<?php echo($codeRecipe);?>">
 			</head>
 			<body>
 		</body>
@@ -104,20 +104,22 @@ function getNewChoice($bdd){
 		}
 		$step=$_GET['step']+1;
 		$father=$_POST['rdo'];
-		$req = $bdd->prepare('SELECT * FROM category WHERE Step=? AND father=?');
-		$req->execute(array($step,$father));
+		$idfather=getIdFather($bdd,$father);
+		$req = $bdd->prepare('SELECT * FROM categorymenu WHERE Father=?');
+		$req->execute(array($idfather));
 		while($donnes=$req->fetch()){
 			array_push($choices, $donnes['Name']);
 		}
 		$req->closeCursor(); 
 		return $choices;
 	}
-	$req = $bdd->prepare('SELECT * FROM category WHERE Step=?');
+	$req = $bdd->prepare('SELECT * FROM categorymenu WHERE Step=?');
 	$req->execute(array($step));
 	while($donnes=$req->fetch()){
-			array_push($choices, $donnes['Name']);
+		array_push($choices, $donnes['Name']);
 	}
 	$req->closeCursor(); 
+	
 	return $choices;
 }
 
@@ -127,11 +129,23 @@ function getNewChoice($bdd){
 function lastStep($bdd){
 	$step=$_GET['step']+1;
 	$father=$_POST['rdo'];
-	$req = $bdd->prepare('SELECT COUNT(*) FROM category WHERE Step=? AND father=?');
-	$req->execute(array($step,$father));
+	$idfather=getIdFather($bdd,$father);
+	$req = $bdd->prepare('SELECT COUNT(*) FROM categorymenu WHERE Father=?');
+	$req->execute(array($idfather));
 	$donnes=$req->fetch();
 	if($donnes[0]==0) return true;
 	return false; 
+}
+
+/**
+*
+**/
+
+function getIdFather($bdd, $father){
+	$req= $bdd->prepare('SELECT * FROM categorymenu WHERE Step=? AND Name=?');
+	$req->execute(array($_GET['step'],$father));
+	$donnes=$req->fetch();
+	return $donnes['Id'];
 }
 /**
 * This function save choices  made by users in the FindMeRecipe functionality in the database.

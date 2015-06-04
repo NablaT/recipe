@@ -17,7 +17,9 @@ body {
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
-
+h3{
+font-size: 0.15em;
+}
 .login-card h1 {
   font-weight: 100;
   text-align: center;
@@ -77,17 +79,42 @@ body {
  }
 
 .login-card a {
-  text-decoration: none;
+ /* text-decoration: none;
   color: #666;
   font-weight: 400;
   text-align: center;
   display: inline-block;
   opacity: 0.6;
-  transition: opacity ease 0.5s;
+  transition: opacity ease 0.5s;*/
+  left:10%;
+  width: 80%;
+  display: block;
+  margin-bottom: 10px;
+  position: relative;
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #009933;
+  text-decoration:none;
+  text-align:center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  padding: 0px 8px;
+  
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  padding: 0 8px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
 
 .login-card a:hover {
-  opacity: 1;
+  /*opacity: 1;*/
+   border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.3);
+  background-color: #00CC33;
 }
 
 
