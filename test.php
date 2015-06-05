@@ -1,8 +1,16 @@
 <?php
 include('config/config.php');
-
+/*
 $array=array();
+$reponse=$bdd->prepare('DELETE FROM recipestep WHERE Name=? ');
+$reponse->execute(array("Smoothie"));
+$reponse->closeCursor(); 
 
+$reponse=$bdd->prepare('DELETE FROM recipe WHERE Name=? ');
+$reponse->execute(array("Smoothie"));
+$reponse->closeCursor(); 
+
+/*
 // array_push($array, "Salty-Plate-Meat-Pork");
 array_push($array, "Salty-Plate-Meat-Beef");
 /*array_push($array, "Salty-Plate-Vegetable");
@@ -14,7 +22,7 @@ array_push($array, "Salty-Entry-Salad-Vegetable	");
 /*array_push($father, "Entry");
 array_push($father, "Entry");
 array_push($father, "Plate");
-array_push($father, "Plate");*/
+array_push($father, "Plate");
 $id=array();
 array_push($id, "Filet Mignon");
 // array_push($id, "Sal3");

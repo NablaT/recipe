@@ -16,7 +16,7 @@
 	<body>
 	<?php
 	$ingredients=getBackIngredient($bdd);
-	$recipe=lookForRecipes($bdd, $ingredients,$_POST['option']);
+	$recipe=lookForRecipes($bdd, $ingredients,$_POST['radio']);
 	if(count($recipe)==0){
 	?>
 		<h2> <?php echo($errorRecipes);?><br/>
@@ -117,7 +117,7 @@
  function getBackIngredient($bdd){
 	 
 	$ingredientlist=array();
-	$input=explode(" ",$_POST['textarea']);
+	$input=explode(" ",$_POST['user']);
 	for($i=0;$i<count($input); $i++){
 		$req=$bdd->prepare('SELECT COUNT(*) FROM recipe WHERE Idingredient=?');
 		$req->execute(array($input[$i]));

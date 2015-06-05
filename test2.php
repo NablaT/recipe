@@ -21,7 +21,7 @@ array_push($categories,"Sugary-Other-Chocolate");
 
 $recipes=lookForRecipesWrongCode($bdd, "Salety");
 print_r($recipes);
-
+/*
 function lookForRecipesWrongCode($bdd, $codeRecipe){
 	$recipes=array();
 	$saveCodes=array();
