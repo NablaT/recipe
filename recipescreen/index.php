@@ -1,10 +1,10 @@
- <?php
+  <?php
  include ('../config/isconnected.php');
  include("../config/config.php");
  printPage($bdd);
  
  function printPage($bdd){
-	include('../text/menuhelpme_text.php');
+	include('../text/mainrecipe_text.php');
 	 ?>
 	<html lang="en">
 	<head>
@@ -15,6 +15,9 @@
 	</head>
 	<body>
 	<?php
+	if(laststep($bdd)){
+		
+	}
 	$ingredients=getBackIngredient($bdd);
 	$recipe=lookForRecipes($bdd, $ingredients,$_POST['radio']);
 	if(count($recipe)==0){

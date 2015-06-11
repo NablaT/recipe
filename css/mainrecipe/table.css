@@ -1,0 +1,44 @@
+h2,h3,h4{
+	text-align:center;
+}
+h5{
+	text-align:center;
+}
+table {
+	margin:auto;
+	border-collapse:collapse;
+	cursor:pointer;
+}
+
+td {
+	padding:15px 60px;
+	border:1px solid #000;
+}
+
+tr.selected {
+	color:#fff;
+	background:#444 !important;
+}
+
+tr:hover {
+	background:#eee;
+}
+
+a {
+	display:table;
+	margin:20px auto;
+	padding:10px 40px;
+	text-decoration:none;
+	color:#fff;background:#09f;
+}
+p{
+	text-align:center;
+}
+id.test{
+
+	display:table;
+	margin:20px auto;
+	padding:10px 40px;
+	text-decoration:none;
+	color:#fff;background:#09f;
+}
