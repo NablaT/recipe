@@ -10,64 +10,122 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
 		<title> <?php echo($title);?></title>
-		<link rel="stylesheet" type="text/css" href="../css/admin/add.css">
+		<link rel="stylesheet" type="text/css" href="../css/mainrecipe/table.css">
 
 	</head>
 	<body>
 	<?php
-	if(laststep($bdd)){
-		
-	}
-	$ingredients=getBackIngredient($bdd);
-	$recipe=lookForRecipes($bdd, $ingredients,$_POST['radio']);
-	if(count($recipe)==0){
-	?>
-		<h2> <?php echo($errorRecipes);?><br/>
+	print_r($_GET);
+	if(recipeNotFound($bdd)){
+		?>
+		<h2> <?php echo($errorRecipesNotFound);?><br/>
 		</h2>
-		<a href="index.php"> <?php echo($previousPage);?> </a>
 		<a href="../menu.php"> <?php echo($menu);?></a>
-	<?php	 
+		<?php
+	}
+	if(laststep($bdd,$_GET['step'],$_GET['recipe'])){
+		echo("JE RENTRE");
+		?>
+		<html>
+				<head>
+				<title><?php echo($recipeFinished);?><br/><?php echo($redirection);?></title>
+					<meta http-equiv="refresh" content="5; URL=../menu.php">
+				</head>
+				<body>
+				</body>
+			</html> 
+		<?php
 	}
 	else{
-		$missingIngredient=array();
-		$stringMissingIngredient=array();
-		for($i=0;$i<count($recipe);$i++){
-			array_push($missingIngredient,getMissingIngredients($bdd, $recipe[$i],$ingredients));
-			array_push($stringMissingIngredient,buildStringMissingIngredients($missingIngredient,$i));
-		}
+		echo("Ici");
+		$currentStep=$_GET['step']+1;
+		$ingredients=getBackIngredient($bdd,$currentStep,$_GET['recipe']);
+		$instructions=getStep($bdd,$currentStep,$_GET['recipe']);
+		print_r($ingredients);
+		echo($instructions);
+		
+		//$recipe=lookForRecipes($bdd, $ingredients,$_POST['radio']);
+		
+		//$stringIngredients=buildStringIngredients($missingIngredient,$i);
+		
 		?>
 		<table id="table">
 		<thead>
 			<tr>
-				<th class="choiceA"><?php echo($name);?>  </th>
-				<th class="choiceC on"><?php echo($missingIngredients);?> </th>
-				<th class="choiceD"><?php echo($nbSteps)?></th>
+				<th class="choiceA"><?php echo($titleingredients);?>  </th>
+				<th class="choiceC on"><?php echo($instruction);?> </th>
 			</tr>
 		</thead>
 		<tbody>
-		<?php
-		for($i=0;$i<count($recipe);$i++){
-			$nameRecipe=getNameRecipe($bdd,$recipe[$i]);
-			$getNbSteps=getNumberSteps($bdd, $recipe[$i]);
-		?>
-		
 		<tr>
-			<td class="ingredient"><?php echo($nameRecipe);?></td>
-			<td class="quantity"><?php echo($stringMissingIngredient[$i]);?></td>
-			<td class="measure"><?php echo($getNbSteps);?></td>
+			<td class="ingredient"><?php 
+			for($i=0;$i<count($ingredients);$i++){
+				?>
+				<h2> -<?php echo($ingredients[$i]);?> </h2>
+				<?php
+			}
+			?></td>
+			<td class="quantity"><?php echo($instructions);?></td>
 		</tr>
 		
-		<?php
-		}
-		?>
 			</tbody>
+			
 			</table>
-			<a href="#"><?php echo($validate);?></a>
-			<script src="../js/selection.js"></script>
-			<a href="index.php"><?php echo($previousPage);?></a>
+			<div class="container">
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<h4>                                                       <h4>
+			<a class="btn left" href="index.php">
+			<span class="left icon icon-heart"><span class="arrow-left"></span></span>
+			<span class="right title"><?php echo($previousPage);?></span>
+			</a>
+			
+			<a class="btn right" href="index.php?recipe=<?php echo($_GET['recipe'])?>&step=<?php echo($currentStep);?>">
+			<span class="left title"><?php echo($next);?></span>
+			<span class="right icon icon-heart"><span class="arrow-right"></span></span>
+			</a>
+			
+			
+			
+			</div>
+			
 		<?php
+		
 	}
  }
+ 
+/**
+* This function returns true if the previous step was the last step of the recipe.
+**/
+function laststep($bdd,$previousStep,$recipe){
+	$req=$bdd->prepare('SELECT COUNT(*) FROM recipestep WHERE Name=?');
+	$req->execute(array($recipe));
+	$donnes=$req->fetch();
+	print_r($donnes);
+	if($donnes[0]==$previousStep) return true;
+	return false;
+}
+
+/**
+*	This function returns true if we can't find the recipe, else false.
+**/
+function recipeNotFound($bdd){
+	if((count($_GET)==0)) return true;
+	if(recipeExists($bdd, $_GET['recipe'])==false) return true;
+	return false; 
+}
+
+/**
+*	This function returns true if the recipe exists. Else false.
+**/
+function recipeExists($bdd,$recipe){
+	$req=$bdd->prepare('SELECT COUNT(*) FROM recipe WHERE Name=?');
+	$req->execute(array($recipe));
+	$donnes=$req->fetch();
+	if($donnes[0]==0) return false;
+	return true;
+}
 /**
  * Function getNumberSteps returns the number of step for the recipe specified in parameter.
  **/
@@ -80,19 +138,19 @@
  
  /**
  * Function getNameRecipe returns the name of a recipe thanks to recipe id in parameter.
- **/
+ **//*
  function getNameRecipe($bdd,$Idrecipe){
 	$req=$bdd->prepare('SELECT * FROM recipe WHERE Idrecipe=?');
 	$req->execute(array($Idrecipe));
 	$donnes=$req->fetch(); 
 	return $donnes['Name'];
  }
- 
+ */
  /**
  * Function buidlStringMissingIngredients returns the string which will be 
  * displayed to users. 
  **/
- function buildStringMissingIngredients($missingIngredients,$pos){
+ function buildStringMissingIngredients($ingredients){
 	 $result="";
 	 for($i=0; $i<count($missingIngredients[$pos]);$i++){
 		 $result=$result."<br/>".$missingIngredients[$pos][$i];
@@ -101,7 +159,7 @@
  }
  /**
  * Function getMissingIngredients returns the ingredients which miss in the recipe.
- **/
+ **//*
  function getMissingIngredients($bdd, $recipe, $ingredients){
 	$missingIngredient=array();
 	$req=$bdd->prepare('SELECT * FROM recipe WHERE Idrecipe=?');
@@ -114,14 +172,24 @@
 	}
 	return $missingIngredient;
  }
- 
  /**
- * Function getBackIngredient cleans the input given by user and extract all ingredients.
+ * Function getStep returns the current step according to the step number and the name of the recipe
+ **/ 
+ function getStep($bdd, $step,$recipe){
+	$req=$bdd->prepare('SELECT * FROM recipestep WHERE Number=? AND Name=?');
+	$req->execute(array($step,$recipe));
+	$donnes=$req->fetch();
+	return $donnes['Step'];
+ }
+ /**
+ * Function getBackIngredient cleans the current step and extract all ingredients.
  **/
- function getBackIngredient($bdd){
-	 
+ function getBackIngredient($bdd, $step,$recipe){
 	$ingredientlist=array();
-	$input=explode(" ",$_POST['user']);
+	$req=$bdd->prepare('SELECT * FROM recipestep WHERE Number=? AND Name=?');
+	$req->execute(array($step,$recipe));
+	$donnes=$req->fetch();
+	$input=explode(" ",$donnes['Step']);
 	for($i=0;$i<count($input); $i++){
 		$req=$bdd->prepare('SELECT COUNT(*) FROM recipe WHERE Idingredient=?');
 		$req->execute(array($input[$i]));
@@ -129,33 +197,14 @@
 		if($donnes[0]>0){
 			array_push($ingredientlist,$input[$i]);
 		}
-	}
-	/*include('../assets/ingredients.php');
-	$lang="english"; //TOCHANGE
-	$ingredients= new SimpleXMLElement($xmlstr);
-	$input=explode(" ",$_POST['textarea']);
-	//print_r($ingredients->ingredients);
-	//echo($ingredients->id->count());
-	$ingredientlist=array();
-	for($i=0;$i<count($input); $i++){
-		foreach($ingredients as $curIngredient){
-			//$curIngredient=$ingredients->ingredients;
-			//print_r($curIngredient['name']);
-			if(strcmp($curIngredient, $input[$i])==0){
-				array_push($ingredientlist, $curIngredient); 
-			}
-			//echo($curIngredient['name']);
-			//echo(" bler");
-		}	
-	}*/
-	
+	}	
 	return $ingredientlist; 
  }
  
 /**
 * Function lookForRecipes returns the recipe list according to ingredients 
 * given by users and the number of missing ingredients.
-**/
+**//*
 function lookForRecipes($bdd, $ingredients,$nbMissing){
 	 $recipes=array();
 	 $count=array();
@@ -178,7 +227,7 @@ function lookForRecipes($bdd, $ingredients,$nbMissing){
 }
 	/**
 	* Function getRecipes returns the cleaning recipe list.
-	**/
+	**//*
 	function getRecipes($recipes,$count, $nbMissing,$bdd){
 		$finalRecipes=array();
 		for($i=0;$i<count($recipes);$i++){
@@ -190,5 +239,5 @@ function lookForRecipes($bdd, $ingredients,$nbMissing){
 			}
 		}
 		return $finalRecipes;
-	}
+	}*/
  ?>

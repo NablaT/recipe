@@ -1,7 +1,7 @@
 body {
   font-family: sans-serif;
   font-weight: 800;
-  background: #FFFFFF;
+  background: url("../../images/chef_italien.jpg");
 }
 h1 {
     font-size: 350%;
@@ -45,7 +45,7 @@ input[type=submit]{
   font-weight: bold;
   color: #000000;
   margin: -30px 0 0 -75px;
-  background: #FFFFFF;
+  background: transparent;
   transition: all 0.2s ease;
   border-radius: 25px;
   border-width:0px;
@@ -60,7 +60,7 @@ input[type=submit]{
   width: 120px;
   height: 55px;
   text-align: center;
-  background: #FFFFFF;
+  background: transparent;
   border-radius: 25px;
   font-style: italic;
   font-weight: bold;
@@ -78,7 +78,7 @@ input[type=submit]{
   width: 120px;
   height: 55px;
   text-align: center;
-  background: #FFFFFF;
+  background: transparent;
   border-radius: 25px;
   font-style: italic;
   font-weight: bold;

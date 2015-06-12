@@ -1,5 +1,22 @@
 <?php
 include('config/config.php');
+$steps=array();
+$stepnumber=0;
+$req = $bdd->prepare('SELECT * FROM recipestep WHERE Name=?');
+$req->execute(array("Smoothie"));
+while($donnes=$req->fetch()){
+	array_push($steps,$donnes['Step']);
+	$stepnumber++;
+}
+$req->closeCursor();
+for($i=0;$i<count($steps);$i++){
+	$req = $bdd->prepare('UPDATE recipestep SET Number=:number WHERE Step=:step ');
+	$req->execute(array(
+		'number' => $i+1,
+		'step' => $steps[$i]
+	));
+}
+
 /*
 $array=array();
 $reponse=$bdd->prepare('DELETE FROM recipestep WHERE Name=? ');
