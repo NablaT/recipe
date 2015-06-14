@@ -18,7 +18,7 @@ if (isset($_SESSION['login'])) {
 		// We test to verify if we save our variables
 }
 else {
-		echo '<body onLoad="alert(\'Veuillez vous connecter pour accéder à cette page\')">';
+		echo '<body onLoad="alert(\'Please log in to access to this page\')">';
 			// Then we redirect to home page
 			echo '<meta http-equiv="refresh" content="0;URL=connectionFrame.php">';
 		$isconnected=false;

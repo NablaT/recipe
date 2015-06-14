@@ -38,7 +38,7 @@ function print_page(){
 				<li class="subitem1"><a href="ingredients/add/add_ingredient.php"><?php echo($addingredient);?></a></li>
                 <li class="subitem2"><a href="ingredients/edit/edit_ingredient.php"><?php echo($editingredient);?></a></li>
                 <li class="subitem3"><a href="ingredients/delete/delete_ingredient.php"><?php echo($deleteingredient);?></a></li>
-				<li class="subitem3"><a href="ingredients/delete/list_ingredient.php"><?php echo($listingredient);?></a></li>
+				<li class="subitem3"><a href="ingredients/list/ingredient_list.php"><?php echo($listingredient);?></a></li>
 				<li class="subitem3"><a href="ingredients/delete/search_ingredient.php"><?php echo($searchingredient);?></a></li>
 			</ul>
 		</li>

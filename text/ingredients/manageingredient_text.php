@@ -30,4 +30,9 @@
  $addit="Add it"; 
  $goback="Previous page";
  
+ ////////////////////List ingredients ////////////////
+ $titlelist="Ingredients list";
+ $name="Name";
+ 
+ 
  ?>

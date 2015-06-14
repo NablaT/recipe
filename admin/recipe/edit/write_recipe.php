@@ -95,7 +95,7 @@ function print_page(){
 	</tbody>
 	</table><p>
 	<a href="confirm_edit.php?confirm=yes&name=<?php echo($_POST['nom']) ?>"><?php echo($editrecipe)?></a>
-	<a href="delete_recipe.php"><?php echo($previouspage)?></a>
+	<a href="edit_recipe.php"><?php echo($previouspage)?></a>
 	<?php
 	}
 	
