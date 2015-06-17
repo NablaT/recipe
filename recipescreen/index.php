@@ -15,7 +15,7 @@
 	</head>
 	<body>
 	<?php
-	print_r($_GET);
+	//print_r($_GET);
 	if(recipeNotFound($bdd)){
 		?>
 		<h2> <?php echo($errorRecipesNotFound);?><br/>
@@ -37,12 +37,13 @@
 		<?php
 	}
 	else{
-		echo("Ici");
+		//echo("Ici");
 		$currentStep=$_GET['step']+1;
 		$ingredients=getBackIngredient($bdd,$currentStep,$_GET['recipe']);
 		$instructions=getStep($bdd,$currentStep,$_GET['recipe']);
-		print_r($ingredients);
-		echo($instructions);
+		$lastStep=$_GET['step']-1;
+		/*print_r($ingredients);
+		echo($instructions);*/
 		
 		//$recipe=lookForRecipes($bdd, $ingredients,$_POST['radio']);
 		
@@ -74,9 +75,9 @@
 			<div class="container">
 			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 			<h4>                                                       <h4>
-			<a class="btn left" href="index.php">
+			<a class="btn left" href="index.php?recipe=<?php echo($_GET['recipe'])?>&step=<?php echo($lastStep);?>">
 			<span class="left icon icon-heart"><span class="arrow-left"></span></span>
 			<span class="right title"><?php echo($previousPage);?></span>
 			</a>
@@ -102,7 +103,7 @@ function laststep($bdd,$previousStep,$recipe){
 	$req=$bdd->prepare('SELECT COUNT(*) FROM recipestep WHERE Name=?');
 	$req->execute(array($recipe));
 	$donnes=$req->fetch();
-	print_r($donnes);
+	//print_r($donnes);
 	if($donnes[0]==$previousStep) return true;
 	return false;
 }

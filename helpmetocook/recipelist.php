@@ -22,7 +22,7 @@
 		<h2> <?php echo($errorRecipes);?><br/>
 		</h2>
 		<a href="index.php"> <?php echo($previousPage);?> </a>
-		<a href="../menu.php"> <?php echo($menu);?></a>
+		<a href="../menu.php"> <?php echo($home);?></a>
 	<?php	 
 	}
 	else{
@@ -109,6 +109,9 @@
 			array_push($missingIngredient, $donnes['Idingredient']);
 		}
 	}
+	if(count($missingIngredient)==0){
+		array_push($missingIngredient, "None");
+	}
 	return $missingIngredient;
  }
  
@@ -161,7 +164,7 @@ function lookForRecipes($bdd, $ingredients,$nbMissing){
 		$req->execute(array($ingredients[$i]));
 		while($donnes =$req->fetch()){
 			if(in_array($donnes['Idrecipe'],$recipes)){
-				$position=$array_search($donnes['Idrecipe'],$recipes);
+				$position=array_search($donnes['Idrecipe'],$recipes);
 				$count[$position]=$count[$position]+1;
 			}
 			else{

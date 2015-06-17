@@ -16,7 +16,7 @@ function request(callback) {
 	
 	l == 0 && (confirmation = "Vous n'avez rien choisi :(");
     
-    xhr.open("GET", "add_after_selection.php?list=" + confirmation, true);
+    xhr.open("GET", "../recipescreen/index.php?list=" + confirmation, true);
     xhr.send(null);
 }
 function readData(sData) {

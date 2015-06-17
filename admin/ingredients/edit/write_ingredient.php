@@ -30,7 +30,7 @@ function print_page(){
 		<h2> <?php echo($addmessage1.$_POST['name'].$addmessage2);?>
 		</h2>
 		<a href="add_ingredient.php"><?php echo($previouspage)?></a>
-		<a href="managerecipe.php"><?php echo($menu)?></a>
+		<a href="../../managerecipe.php"><?php echo($menu)?></a>
 		</body>
 		</html>
 		<h2> 

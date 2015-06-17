@@ -26,7 +26,7 @@ function print_page(){
 		<h2> <?php echo($errorIngredientExists);?><br/>
 		</h2>
 		<a href="add_ingredient.php"> <?php echo($previouspage);?> </a>
-		<a href="../managerecipe.php"> <?php echo($menu);?></a>
+		<a href="../../managerecipe.php"> <?php echo($menu);?></a>
 		<?php
 	}
 	else{
