@@ -2,9 +2,15 @@
 include('config/config.php');
 $steps=array();
 $stepnumber=0;
-$req = $bdd->prepare('SELECT * FROM recipestep WHERE Name=?');
+$req = $bdd->prepare('DELETE FROM recipe WHERE Name=?');
 $req->execute(array("Smoothie"));
-while($donnes=$req->fetch()){
+$req->closeCursor();
+
+$req = $bdd->prepare('DELETE FROM recipestep WHERE Name=?');
+$req->execute(array("Smoothie"));
+$req->closeCursor();
+
+/*while($donnes=$req->fetch()){
 	array_push($steps,$donnes['Step']);
 	$stepnumber++;
 }

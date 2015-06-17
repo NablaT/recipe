@@ -24,7 +24,12 @@
 		<?php
 	}
 	if(laststep($bdd,$_GET['step'],$_GET['recipe'])){
-		echo("JE RENTRE");
+		?>
+		<h2><title><?php echo($recipeFinished);?><br/>
+		</h2>
+		<a href="../menu.php"> <?php echo($menu);?></a>
+		<?php
+		/*
 		?>
 		<html>
 				<head>
@@ -34,7 +39,7 @@
 				<body>
 				</body>
 			</html> 
-		<?php
+		<?php*/
 	}
 	else{
 		//echo("Ici");
